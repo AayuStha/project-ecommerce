@@ -67,7 +67,7 @@
         // Output each product
         while($row = $result->fetch_assoc()) {
             echo "<div class='col-4'>";
-            echo "<a href='products/detail_one.html'>";
+            echo "<a href='product_detail.php?id=" . $row["id"] . "'>";
             echo "<img src='backend/uploads/" . $row["image"] . "' width='100'' alt='Product Image'>";
             echo "<h4>" . $row["name"] . "</h4>";
             echo "<div class='rating'>";
@@ -78,6 +78,7 @@
                 echo "<i class='fa-regular fa-star'></i>";
             }
             echo "</div>";
+            echo "</a>";
             echo "</div>";
         }
     } else {
