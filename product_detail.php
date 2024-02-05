@@ -15,11 +15,11 @@
     <title>BagShop Nepal</title>
 <style>
     img {
-        width: 200px;
-            height: auto;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+        width: 250px;
+        height: fixed;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
         }
         h1 {
             font-size: 2em;
@@ -42,7 +42,12 @@
             border-radius: 5px;
             transition: background-color 0.3s ease;
             cursor: pointer;
-}
+        }
+        @media screen and (max-width: 510px){   
+            h1{
+                margin-left: 6px;
+            }
+        }
 </style>
 
 </head>
