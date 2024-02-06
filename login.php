@@ -25,34 +25,20 @@
                 </div>
                 <nav>
                     <ul id="items">
-                        <li><a href="/index.html" class="active">Home</a></li>
+                        <li><a href="/index.html" >Home</a></li>
                         <li><a href="/project-ecommerce/products.php">Products</a></li>
                         <li><a href="/about.html">About</a></li>
                         <li><a href="/contact.html">Contact</a></li>
                         <li><a href="/offers.html">Offers</a></li>
-                        <li><a href="/backend/contact.php">Login</a></li>
+                        <li><a href="/backend/contact.php" class="active">Login</a></li>
                         <li><a href="/signup.html">Signup</a></li>
                     </ul>
                 </nav>
                 <!-- <img src="images/cart.png" width="30px" height="30px"alt="cart"> -->
             </div>
-            <hr>
-            <br>
-            <div class="row">
-                <div class="col-2">
-                        <h1>Carry in Style: <br> Unleash Your Bag Obsession</h1>
-                        <p>Step into the world of fashion-forward bags. Discover our curated collection and find the perfect accessory to elevate your style.</p>
-                        <a href="products.html" class="btn">Explore Now &#8594;</a>
-                </div>
-                <div class="col-2">
-                        <a href="products/detail_three.html"><img src="images/demo8.png" alt="bag"></a>
-                </div>
-            </div>
         </div>
     </div>
-
-    <div class="center-container">
-        <div class="login-container">
+    <div class="container">
             <form class="login-form" method="POST" action="./login.php">
                 <h2>Login</h2>
                 <label for="email">Email</label>
@@ -61,10 +47,62 @@
                 <input type="password" id="password" name="password" required>
                 <a href="#" class="forgot-password">Forgot password?</a>
                 <button type="submit">Login</button>
-                <p class="signup-text">Don't have an account? <a href="./signup.html">Sign up</a></p>
+                <p class="signup-text">Don't have an account? <a href="./signup.php">Sign up</a></p>
             </form>
-        </div>   
     </div>
+
+    <?php
+    include 'config.php';
+
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            
+            $email = $_POST["email"];
+            $password = $_POST["password"];
+        
+            $mysqli = new mysqli($servername, $username, $password, $database);
+        
+            if ($mysqli->connect_error) {
+                die("Connection failed: " . $mysqli->connect_error);
+            }
+        
+            $stmt = $mysqli->prepare("SELECT id,password FROM Users WHERE email = ?");
+            $stmt->bind_param("s", $email);
+            $stmt->execute();
+            $stmt->store_result();
+            $num_rows = $stmt->num_rows;
+
+            if ($num_rows > 0) {
+
+                $stmt->bind_result($id,$hashed_password_from_database);
+                $stmt->fetch();
+        
+                if (password_verify($password, $hashed_password_from_database)) {
+
+                    // Password is correct, so start a new session
+                    // $result = $stmt->get_result();
+                    // $user = $result->fetch_assoc();
+                    session_start();
+                    
+                    // // Store data in session variables
+                    $_SESSION["loggedin"] = true;
+                    $_SESSION["user"] = $id;                         
+                    
+                    // Redirect user to welcome page
+                    header("location: index.html");
+                } else {
+                    // Display an error message if password is not valid
+                    echo "<p style='color: green; text-align:center; font-size: 80px; color: #f44336;margin: 100px; font-weight: bold;'>Invalid username and password combination.</p>";
+                }
+
+            }
+            else {
+                // Display an error message if password is not valid
+                echo "Invalid username and password combination.";
+            }
+            $stmt->close();
+            $mysqli->close();
+        } 
+        ?>
     
     <!-- Footer -->
 
