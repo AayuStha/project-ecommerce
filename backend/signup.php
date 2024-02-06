@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="css/style.css" class="css">
+    <link rel="stylesheet" href="../css/style.css" class="css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,6 +13,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <title>BagShop Nepal</title>
+    <style>
+        h1{
+            text-align: center;
+            padding: 10px;
+        }
+    </style>
 </head>
 <body>
     <div class="header">
@@ -36,76 +42,58 @@
                 </nav>
                 <!-- <img src="images/cart.png" width="30px" height="30px"alt="cart"> -->
             </div>
-            <hr>
-            <br>
-            <div class="row">
-                <div class="col-2">
-                        <h1>Carry in Style: <br> Unleash Your Bag Obsession</h1>
-                        <p>Step into the world of fashion-forward bags. Discover our curated collection and find the perfect accessory to elevate your style.</p>
-                        <a href="products.html" class="btn">Explore Now &#8594;</a>
-                </div>
-                <div class="col-2">
-                        <a href="products/detail_three.html"><img src="images/demo8.png" alt="bag"></a>
-                </div>
-            </div>
         </div>
     </div>
+        <br>
+        <br>
+        <?php
+        include '../config.php';
 
-    <form class="signup-form" method="POST" action="./signup.php">
-        <h2>Sign Up</h2>
-        <div class="name-field">
-            <input type="text" name="firstname" placeholder="First Name" required> 
-            <input type="text" name="lastname" placeholder="Last Name" required> 
-        </div>
-        <input type="email" name="email" placeholder="Email" required>
-        <input type="tel" name="number" placeholder="Number" required>
-        <input type="password" name="password" placeholder="Create Password" required>
-        <input type="password" name="confirm_password" placeholder="Confirm Password" required>
-        <input type="checkbox" id="terms" name="terms" required>
-        <label for="terms">By clicking Sign Up, you agree to our <a href="./terms.html">Terms</a> and that you have read our <a href="./policy.html">Privacy Policy</a></label>
-        <button type="submit" id="signup-button">Sign Up</button>
-        <p>Already have an account? <a href="./login.php">Log in</a>.</p>
-    </form>
+        ini_set('display_errors', 1);
+        ini_set('display_startup_errors', 1);
+        error_reporting(E_ALL);
 
-    <?php
-    include 'config.php';
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $firstname = $_POST["firstname"];
-        $lastname = $_POST["lastname"];
-        $email = $_POST["email"];
-        $number = $_POST["number"];
-        $password = $_POST["password"];
-        $confirm_password = $_POST["confirm_password"];
 
-        if ($password != $confirm_password) {
-            echo "<h2>Passwords do not match</h2>";
-            exit;
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $firstname = $_POST['firstname'];
+            $lastname = $_POST['lastname'];
+            $email = $_POST['email'];
+            $number = $_POST['number'];
+            $pass = $_POST['password'];
+            $confirm_password = $_POST['confirm_password'];
+
+            if ($pass != $confirm_password) {
+                echo "Passwords do not match.";
+                exit();
+            }
+
+            $conn = new mysqli($servername, $username, $password, $database);
+                
+            if ($conn->connect_error) {
+                die("Connection failed: " . $conn->connect_error);
+            }
+
+            $stmt = $conn->prepare("INSERT INTO users (firstname, lastname, email, number, password) VALUES (?, ?, ?, ?, ?)");
+
+            $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
+            $stmt->bind_param("sssss", $firstname, $lastname, $email, $number, $hashed_password);
+
+            if ($stmt->execute()) {
+                echo "<h1>New record created successfully<h1>";
+            } else {
+                echo "Error: " . $stmt->error;
+            }
+
+            // Close the statement
+            $stmt->close();
         }
 
-        $mysqli = new mysqli($servername, $username, $password, $database);
+        // Close the connection
+        $conn->close();
+        ?>
 
-        if ($mysqli->connect_error) {
-            die("Connection failed: " . $mysqli->connect_error);
-        }
-
-        $stmt = $mysqli->prepare("INSERT INTO Users (firstname, lastname, email, number, password) VALUES (?, ?, ?, ?, ?)");
-        $hashed_password = password_hash($password, PASSWORD_BCRYPT);
-        $stmt->bind_param("sssss", $firstname, $lastname, $email, $number, $hashed_password);
-
-
-        if ($stmt->execute()) {
-            echo "<h2>Account creation successfully</h2>";
-        } else {
-            echo "<h2>Error: " . $stmt->error;
-        }
-
-
-        $stmt->close();
-        $mysqli->close();
-    }
-    ?>
-    
-    <!-- Footer -->
+        <!-- Footer -->
 
     <div class="footer">
         <div class="container">
