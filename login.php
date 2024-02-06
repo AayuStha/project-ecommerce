@@ -30,7 +30,7 @@
                         <li><a href="/about.html">About</a></li>
                         <li><a href="/contact.html">Contact</a></li>
                         <li><a href="/offers.html">Offers</a></li>
-                        <li><a href="/login.php">Login</a></li>
+                        <li><a href="/backend/contact.php">Login</a></li>
                         <li><a href="/signup.html">Signup</a></li>
                     </ul>
                 </nav>
@@ -40,24 +40,32 @@
             <br>
             <div class="row">
                 <div class="col-2">
-                        <h1 style="text-align: center;">Shipping Policy</h1>
+                        <h1>Carry in Style: <br> Unleash Your Bag Obsession</h1>
+                        <p>Step into the world of fashion-forward bags. Discover our curated collection and find the perfect accessory to elevate your style.</p>
+                        <a href="products.html" class="btn">Explore Now &#8594;</a>
+                </div>
+                <div class="col-2">
+                        <a href="products/detail_three.html"><img src="images/demo8.png" alt="bag"></a>
                 </div>
             </div>
-            <br>
-            <p style="font-size: 18px; text-align: center;">
-                We at Bagline endeavor to deliver the order within the defined time frame. Please note that the expected delivery time is at our best approximation and will vary with circumstances such as online security checks, delivery restrictions, payment and stock availability.
-                <br><br>
-                The standard delivery time will be approximately 7-10 business days after the order has been placed online. The aforesaid time may vary in case of special occasions or in case of situations out of control by the administration.
-            </p>
-            <br>
-            <p style="font-size: 24px;text-align: center;">
-                <b>Delivery Charges</b>
-                <br><br>
-                <p style="text-align: center;font-size: 25px;">100% free shipping all over Nepal.</p>
-            </p>
-            <br>
         </div>
     </div>
+
+    <div class="center-container">
+        <div class="login-container">
+            <form class="login-form" method="POST" action="./login.php">
+                <h2>Login</h2>
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+                <a href="#" class="forgot-password">Forgot password?</a>
+                <button type="submit">Login</button>
+                <p class="signup-text">Don't have an account? <a href="./signup.html">Sign up</a></p>
+            </form>
+        </div>   
+    </div>
+    
     <!-- Footer -->
 
     <div class="footer">
@@ -67,12 +75,16 @@
                     <h3>Download our App</h3>
                     <p>Download  App for Android and ios mobile phone.</p>
                     <div class="app-logo">
-                        <img src="images/play-store.png" alt="">
-                        <img src="images/app-store.png" alt="">
+                        <img src="backend/uploads/play-store.png" alt="">
+                        <img src="backend/uploads/app-store.png" alt="">
                     </div>
                 </div>
                 <div class="footer-col-2">
-                    <img src="images/logo.jpg" alt="logo">
+                    <h3>Newsletter</h3>
+                    <form action="../project-ecommerce/subscribe.php" method="post">
+                        <input type="email" name="email" placeholder="Enter your email">
+                        <button type="submit">Subscribe</button>
+                    </form>
                     <p>Our purpose is to sustainably make the pleasure and benefits of Bags Accessible to many.</p>
                 </div>
                 <table border="0" cellspacing="10" cellpadding="10">
