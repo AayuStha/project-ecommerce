@@ -51,7 +51,7 @@
         </div>
     </div>
 
-    <form class="signup-form" method="POST" action="./signup.php">
+    <form class="signup-form" method="POST">
         <h2>Sign Up</h2>
         <div class="name-field">
             <input type="text" name="firstname" placeholder="First Name" required> 
