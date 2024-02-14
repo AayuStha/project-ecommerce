@@ -69,6 +69,17 @@ p{
     margin-bottom: 20px;
     border-radius: 1px;
     background-color: white;
+    text-align: center;
+    line-height:25px;
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center !important;
+    align-items: center !important;
+}
+.feature-item > img{
+    max-width: 100%;
+    height: auto;
+    
 }
 
 .feature-item h3 {
@@ -179,7 +190,7 @@ nav ul li a:hover{
 }
 .title{
     text-align: center;
-    margin: 0 auto 80px;
+    margin: 0 auto 30px;
     position: relative;
     line-height: 60px;
     color: #222988;

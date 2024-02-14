@@ -17,7 +17,16 @@
     <style>
         h2{
             text-align: center;
-            padding: 10px;
+            padding: 10vw;
+            font-size: 3vw;
+        }
+        .btn{
+            border: 1px solid black;
+            width: 5vw;
+            margin-left: 47vw;
+            text-align: center;
+            line-height: 40px;
+            cursor: pointer;
         }
     </style>
 </head>
@@ -81,6 +90,7 @@
                     }
                 }
             ?>
+            <a href="/project-ecommerce/index.html" class="btn"><i class="fa-solid fa-arrow-left"> Back</i></a>
 
 <!-- Footer -->
 

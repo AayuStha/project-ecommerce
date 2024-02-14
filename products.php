@@ -41,7 +41,7 @@
                         <li><a href="/signup.html">Signup</a></li>
                     </ul>
                 </nav>
-                <!-- <img src="images/cart.png" width="30px" height="30px"alt="cart"> -->
+                <a href="/project-ecommerce/cart.php"><img src="/project-ecommerce/backend/uploads/cart.png" width="30px" height="30px"alt="cart"></a>
             </div>
         </div>
         <hr>

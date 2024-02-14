@@ -1,41 +1,63 @@
-<!DOCTYPE html>
-<htmlau lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<?php
+    session_start();
 
-    <link rel="stylesheet" href="css/style.css" class="css">
+    include 'config.php';
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    $db = new mysqli($servername, $username, $password, $database);
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        .navbar{
-            color: white;
+
+    // Check connection
+    if ($db->connect_error) {
+        die("Connection failed: " . $db->connect_error);
+    }
+
+    // Get the products from the database
+    $result = $db->query('SELECT * FROM products');
+    $products = $result->fetch_all(MYSQLI_ASSOC);
+
+    // Initialize the cart and the total amount
+    if (!isset($_SESSION['cart'])) {
+        $_SESSION['cart'] = [];
+    }
+    if (!isset($_SESSION['total_amount'])) {
+        $_SESSION['total_amount'] = 0;
+    }
+
+    // Handle the form submission
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $productId = $_POST['product_id'];
+
+        // Add the product to the cart and update the total amount
+        if (!isset($_SESSION['cart'][$productId])) {
+            $_SESSION['cart'][$productId] = 0;
         }
+        $_SESSION['cart'][$productId]++;
+        $_SESSION['total_amount'] += $products[$productId]['price'];
+    }
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        /* Add your CSS here */
     </style>
-    <title>BagShop Nepal</title>
 </head>
 <body>
-        <div class="container">
-            <div class="navbar">
-                <div class="logo">
-                    <a href="/index.html">
-                        <img src="/images/logo.png" width="125px"alt="logo">
-                    </a>
-                </div>
-                <nav>
-                    <ul id="items">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="products.html">Products</a></li>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="contact.html" class="active">Contact</a></li>
-                        <li><a href="offers.html">Offers</a></li>
-                    </ul>
-                </nav>
-                <!-- <img src="images/cart.png" width="30px" height="30px"alt="cart"> -->
+    <h1>Total Amount: $<?php echo number_format($_SESSION['total_amount'], 2); ?></h1>
+
+    <?php foreach ($products as $product): ?>
+        <div class="product-card">
+            <img src="<?php echo $product['image_url']; ?>" alt="<?php echo $product['name']; ?>">
+            <div>
+                <h2><?php echo $product['name']; ?></h2>
+                <p>$<?php echo number_format($product['price'], 2); ?></p>
             </div>
+            <form method="POST">
+                <input type="hidden" name="product_id" value="<?php echo $product['id']; ?>">
+                <button type="submit">Add to Cart</button>
+            </form>
         </div>
-        <hr>
+    <?php endforeach; ?>
+</body>
+</html>
