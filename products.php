@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="css/style.css" class="css">
+    <link rel="stylesheet" href="search.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,6 +14,42 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <title>All Products - BagShop Nepal</title>
+    <style>
+    .searchbox{
+        position: relative;
+    }
+    .input {
+        width: 50px;
+        height: 50px;
+        background: none;
+        border: 3px solid black;
+        border-radius: 50px;
+        box-sizing: border-box;
+        font-size: 26px;
+        color: black;
+        outline: none;
+        transition: .5s;
+    }
+    .searchbox:hover input{
+        width: 200px;
+        background: white;
+        border-radius: 50px;
+    }
+    .searchbox i{
+        position: absolute;
+        top: 50%;
+        right: 6px;
+        transform: translate(-50%,-50%);
+        font-size: 20px;
+        color: black;
+        transition: .2s;
+    }
+    .searchbox:hover i{
+        opacity: 0;
+        z-index: -1;
+    }
+
+    </style>
 </head>
 <body>
         <div class="container">
@@ -48,13 +85,16 @@
     <div class="small-container">
         <div class="row row-2">
             <h2>All Products</h2>
-            <!-- <select>
-                <option>Default</option>
-                <option>High to Low</option>
-                <option>Low to High</option>
+            <div class="searchbox">
+                <form name="search" action="search.php" method="get">
+                    <input type="text" class="input" name="search" onmouseout="this.value = ''; this.blur();">
+                </form>
+                <i class="fas fa-search"></i>
 
-            </select> -->
+            </div>
         </div>
+
+        
         <div class="row">
     <?php
     // Connect to the database
@@ -88,6 +128,7 @@
             echo "</div>";
             echo "</a>";
             echo "</div>";
+
         }
     } else {
         echo "<p>No products found</p>";
@@ -101,7 +142,7 @@
                 <span>&#8594;</span>
             </div> -->
     </div>
-
+    
     <!-- Footer -->
 
     <div class="footer">
