@@ -1,12 +1,3 @@
-<?php
-session_start();
-
-if(!isset($_SESSION['loggedin'])) {
-    header('Location: admin_login.php');
-    exit;
-}
-?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -86,8 +77,8 @@ table td, table th {
     word-break: break-word;
 }
 .product-table td {
-    word-wrap: break-word;      /* Allow long words to be able to break and wrap onto the next line */
-    max-width: 300px;           /* Any max-width you want */
+    word-wrap: break-word;   
+    max-width: 300px;           
 }
     </style>
 </head>
