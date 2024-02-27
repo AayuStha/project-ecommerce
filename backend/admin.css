@@ -64,13 +64,12 @@ h1 {
     text-decoration: none;
 }
 
-/* Media query for screens larger than 768px */
 @media (min-width: 768px) {
     .login-box {
-        width: 50%; /* Half width on large screens */
+        width: 50%; 
     }
 
     button {
-        width: auto; /* Auto width on large screens */
+        width: auto;
     }
 }
