@@ -1,3 +1,6 @@
+Certainly! Here's the updated README.md file with instructions for starting XAMPP using the terminal on both Windows and macOS:
+
+```markdown
 # E-commerce Database Setup Guide
 
 This guide provides instructions for setting up the e-commerce database in MySQL or MariaDB. The database consists of tables for storing information about administrators, products, subscribers, and users.
@@ -7,6 +10,35 @@ This guide provides instructions for setting up the e-commerce database in MySQL
 - Ensure you have MySQL or MariaDB installed on your system. If not, you can install it using your package manager or by downloading it from the official website:
   - [MySQL Installation Guide](https://dev.mysql.com/doc/mysql-installation-excerpt/5.7/en/)
   - [MariaDB Installation Guide](https://mariadb.com/kb/en/getting-installing-and-upgrading-mariadb/)
+
+- For Windows users: Install XAMPP, which includes MySQL/MariaDB, Apache, PHP, and phpMyAdmin.
+  - [XAMPP Installation Guide](https://www.apachefriends.org/index.html)
+
+## Starting XAMPP (Windows)
+
+1. Open your Command Prompt as an administrator.
+
+2. Navigate to the XAMPP installation directory. Typically, it's installed in `C:\xampp\`.
+
+3. Start XAMPP by running the following command:
+   ```bash
+   xampp-control
+   ```
+
+4. The XAMPP Control Panel will open. Start the Apache and MySQL services by clicking on the "Start" buttons next to them.
+
+## Starting XAMPP (macOS)
+
+1. Open your terminal.
+
+2. Navigate to the XAMPP installation directory. By default, it's installed in `/Applications/XAMPP`.
+
+3. Start XAMPP by running the following command:
+   ```bash
+   sudo ./xampp start
+   ```
+
+4. You will be prompted to enter your password. After entering your password, XAMPP will start and display the status of Apache and MySQL services.
 
 ## Database Schema
 
@@ -81,3 +113,8 @@ For more information on using MySQL or MariaDB, refer to their respective docume
 
 - [MySQL Documentation](https://dev.mysql.com/doc/)
 - [MariaDB Documentation](https://mariadb.com/kb/en/documentation/)
+
+For XAMPP-related queries and troubleshooting, refer to the [XAMPP Documentation](https://www.apachefriends.org/faq_windows.html).
+```
+
+Feel free to use this README.md file as is or customize it further according to your preferences or specific needs.
