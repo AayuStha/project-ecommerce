@@ -1,5 +1,3 @@
-Certainly! Here's the updated README.md file with instructions for starting XAMPP using the terminal on both Windows and macOS:
-
 ```markdown
 # E-commerce Database Setup Guide
 
@@ -115,6 +113,7 @@ For more information on using MySQL or MariaDB, refer to their respective docume
 - [MariaDB Documentation](https://mariadb.com/kb/en/documentation/)
 
 For XAMPP-related queries and troubleshooting, refer to the [XAMPP Documentation](https://www.apachefriends.org/faq_windows.html).
-```
 
 Feel free to use this README.md file as is or customize it further according to your preferences or specific needs.
+```
+
