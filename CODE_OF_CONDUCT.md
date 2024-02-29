@@ -43,4 +43,4 @@ This Code of Conduct is adapted from the [Contributor Covenant](https://www.cont
 
 ## Contact
 
-If you have any questions about this Code of Conduct, please contact us at [contact email, etc.].
+If you have any questions about this Code of Conduct, please contact us at [aayustha21@gmail.com | sakshimaharjan.16310@gmail.com].
