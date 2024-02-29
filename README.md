@@ -1,4 +1,3 @@
-```markdown
 # E-commerce Database Setup Guide
 
 This guide provides instructions for setting up the e-commerce database in MySQL or MariaDB. The database consists of tables for storing information about administrators, products, subscribers, and users.
@@ -19,6 +18,7 @@ This guide provides instructions for setting up the e-commerce database in MySQL
 2. Navigate to the XAMPP installation directory. Typically, it's installed in `C:\xampp\`.
 
 3. Start XAMPP by running the following command:
+
    ```bash
    xampp-control
    ```
@@ -32,6 +32,7 @@ This guide provides instructions for setting up the e-commerce database in MySQL
 2. Navigate to the XAMPP installation directory. By default, it's installed in `/Applications/XAMPP`.
 
 3. Start XAMPP by running the following command:
+
    ```bash
    sudo ./xampp start
    ```
@@ -115,5 +116,5 @@ For more information on using MySQL or MariaDB, refer to their respective docume
 For XAMPP-related queries and troubleshooting, refer to the [XAMPP Documentation](https://www.apachefriends.org/faq_windows.html).
 
 Feel free to use this README.md file as is or customize it further according to your preferences or specific needs.
-```
+
 
