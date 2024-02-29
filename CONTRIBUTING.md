@@ -1,7 +1,4 @@
-Certainly! Below is a template for a `CONTRIBUTING.md` file adhering to GitHub standards:
-
-```markdown
-# Contributing to [Project Name]
+# Contributing to BAGSHOP NEPAL
 
 Welcome to [Project Name]! We are excited that you are interested in contributing to our project. By contributing, you not only improve the project but also become part of a vibrant community dedicated to open-source collaboration.
 
@@ -47,6 +44,4 @@ By contributing to this project, you agree that your contributions will be licen
 We appreciate your interest and contributions to [Project Name]. Your efforts help improve the project and make it valuable for users around the world. Thank you for being part of our community!
 
 If you have any questions or need further assistance, feel free to reach out to the project maintainers or community members. Happy contributing!
-```
 
-Replace `[Project Name]` with the actual name of your project. Additionally, ensure that you have a `CODE_OF_CONDUCT.md` and a `LICENSE` file in your repository according to your project's needs and licensing terms.
