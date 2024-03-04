@@ -35,19 +35,19 @@
         <div class="container">
             <div class="navbar">
                 <div class="logo">
-                    <a href="/index.html">
+                    <a href="/project-ecommerce/index.html">
                         BagShopNepal
                     </a>
                 </div>
                 <nav>
                     <ul id="items">
-                        <li><a href="/index.html" class="active">Home</a></li>
+                        <li><a href="/project-ecommerce/index.html" class="active">Home</a></li>
                         <li><a href="/project-ecommerce/products.php">Products</a></li>
-                        <li><a href="/about.html">About</a></li>
-                        <li><a href="/contact.html">Contact</a></li>
-                        <li><a href="/offers.html">Offers</a></li>
-                        <li><a href="/login.php">Login</a></li>
-                        <li><a href="/signup.html">Signup</a></li>
+                        <li><a href="/project-ecommerce/about.html">About</a></li>
+                        <li><a href="/project-ecommerce/contact.html">Contact</a></li>
+                        <li><a href="/project-ecommerce/offers.html">Offers</a></li>
+                        <li><a href="/project-ecommerce/login.php">Login</a></li>
+                        <li><a href="/project-ecommerce/signup.html">Signup</a></li>
                     </ul>
                 </nav>
                 <!-- <img src="images/cart.png" width="30px" height="30px"alt="cart"> -->
