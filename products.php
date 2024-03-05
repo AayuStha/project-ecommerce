@@ -62,15 +62,7 @@
                 <nav>
                     <ul id="items">
                         <li><a href="/project-ecommerce/index.html" class="active">Home</a></li>
-                        <li class = "dropdown">
-                            <a href="/project-ecommerce/products.php">Products</a>
-                            <div class="dropdown-content">
-                                <a href="#">Travel</a>
-                                <a href="#">Work</a>
-                                <a href="#">Everyday</a>
-                                <a href="#">All Products</a>
-                            </div>
-                        </li>
+                        <li><a href="/project-ecommerce/products.php">Products</a></li>
                         <li><a href="/project-ecommerce/about.html">About</a></li>
                         <li><a href="/project-ecommerce/contact.html">Contact</a></li>
                         <li><a href="/project-ecommerce/offers.html">Offers</a></li>
@@ -85,6 +77,12 @@
     <div class="small-container">
         <div class="row row-2">
             <h2>All Products</h2>
+            <div class="dropdown-content">
+                                <a href="#">Travel</a>
+                                <a href="#">Work</a>
+                                <a href="#">Everyday</a>
+                                <a href="#">All Products</a>
+                            </div>
             <div class="searchbox">
                 <form name="search" action="search.php" method="get">
                     <input type="text" class="input" name="search" onmouseout="this.value = ''; this.blur();">
