@@ -14,35 +14,37 @@
     
     <title>BagShop Nepal</title>
     <style>
-        
+
     .navcont{
         max-width: 1300px;
         margin: auto;
         padding-left: 25px;
         padding-right: 25px;
     }
-            .container {
+        .form-container {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        width: 150%;
+        width: 90%;
+        margin-left: 100px;
     }
 
     img {
         flex: 1;
-        max-width: 50%;
+        max-width: 40%;
         height: auto;
+
     }
 
     .login-form {
         flex: 1;
         background-color: #fff;
-        padding: 30px;
+        padding: 20px;
         border-radius: 10px;
         box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
         width: 400px;
         border: 2px solid #5f5f5f;
-        margin: 20px 20px 20px 200px;
+        margin: 20px 90px 20px 200px;
     }
 
     .login-form h2 {
@@ -73,11 +75,16 @@
     }
 
     @media screen and (max-width: 500px) {
-        .container {
+        .form-container {
             flex-direction: column;
+            margin-left: 20px;
         }
-
-        img, .login-form {
+        img{
+            max-width: 90%;
+            max-height: 400px;
+            object-fit: cover;
+        }
+        .login-form {
             margin: 20px 0;
             width: 100%;
 
@@ -112,7 +119,7 @@
             </div>
         </div>
     </div>
-    <div class="container">
+    <div class="form-container">
         <img src="/project-ecommerce/images/login.jpg" alt="login image">
             <form class="login-form" method="POST" action="./login.php">
                 <h2>Login</h2>
