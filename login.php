@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="css/style.css" class="css">
+    <link rel="stylesheet" href="../project-ecommerce/css/style.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,10 +13,84 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <title>BagShop Nepal</title>
+    <style>
+        
+    .navcont{
+        max-width: 1300px;
+        margin: auto;
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+            .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 150%;
+    }
+
+    img {
+        flex: 1;
+        max-width: 50%;
+        height: auto;
+    }
+
+    .login-form {
+        flex: 1;
+        background-color: #fff;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+        width: 400px;
+        border: 2px solid #5f5f5f;
+        margin: 20px 20px 20px 200px;
+    }
+
+    .login-form h2 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .login-form input {
+        width: 95%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+    }
+
+    .login-form button {
+        width: 100%;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        background-color: #af0505;
+        color: #fff;
+        cursor: pointer;
+    }
+
+    .login-form button:hover {
+        background-color: #0056b3;
+    }
+
+    @media screen and (max-width: 500px) {
+        .container {
+            flex-direction: column;
+        }
+
+        img, .login-form {
+            margin: 20px 0;
+            width: 100%;
+
+        }
+        .login-form{
+            width:70%;
+        }
+    }
+    </style>
 </head>
 <body>
     <div class="header">
-        <div class="container">
+        <div class="navcont">
             <div class="navbar">
                 <div class="logo">
                     <a href="/project-ecommerce/index.html">
@@ -39,6 +113,7 @@
         </div>
     </div>
     <div class="container">
+        <img src="/project-ecommerce/images/login.jpg" alt="login image">
             <form class="login-form" method="POST" action="./login.php">
                 <h2>Login</h2>
                 <label for="email">Email</label>
@@ -47,7 +122,9 @@
                 <input type="password" id="password" name="password" required>
                 <a href="#" class="forgot-password">Forgot password?</a>
                 <button type="submit">Login</button>
-                <p class="signup-text">Don't have an account? <a href="./signup.php">Sign up</a></p>
+                <br>
+                <br>
+                <p class="signup-text">Don't have an account? <a href="./signup.html">Sign up</a></p>
             </form>
     </div>
 
@@ -148,6 +225,7 @@
                     </tr>
                 </table>    
             </div>
+            <br>
             <hr>
             <p class="copyright">© 2023 BagShop Nepal. All rights reserved. </p>
         </div>
