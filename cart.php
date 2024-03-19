@@ -5,7 +5,6 @@
 
     $db = new mysqli($servername, $username, $password, $database);
 
-
     // Check connection
     if ($db->connect_error) {
         die("Connection failed: " . $db->connect_error);
@@ -13,7 +12,10 @@
 
     // Get the products from the database
     $result = $db->query('SELECT * FROM products');
-    $products = $result->fetch_all(MYSQLI_ASSOC);
+    $products = [];
+    while ($row = $result->fetch_assoc()) {
+        $products[$row['id']] = $row;
+    }
 
     // Initialize the cart and the total amount
     if (!isset($_SESSION['cart'])) {
@@ -33,15 +35,17 @@
         }
         $_SESSION['cart'][$productId]++;
         $_SESSION['total_amount'] += $products[$productId]['price'];
+
+        // Redirect to the cart page
+        header('Location: cart.php');
+        exit;
     }
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
-    <style>
-        /* Add your CSS here */
-    </style>
+    <link rel="stylesheet" href="/project-ecommerce/css/cart.css">
 </head>
 <body>
     <h1>Total Amount: $<?php echo number_format($_SESSION['total_amount'], 2); ?></h1>

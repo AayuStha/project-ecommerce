@@ -105,7 +105,7 @@
                 <p class="price">Price: 🇳🇵<?php echo $product['price']; ?></p>
                 <br>
                 <button class="buy-now-btn">Buy Now</button>
-                <button class="addtocart-btn">Add to Cart</button>
+                <a href="/project-ecommerce/cart.php"><button class="addtocart-btn">Add to Cart</button></a>
 
 
                 <br>
