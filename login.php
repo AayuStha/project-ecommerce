@@ -126,7 +126,7 @@
                 <label for="email">Email</label>
                 <input type="email" id="email" name="email" required>
                 <label for="password">Password</label>
-                <input type="password" id="password" name="password" required>
+                <input type="password" id="usr_password" name="usr_password" required>
                 <a href="#" class="forgot-password">Forgot password?</a>
                 <button type="submit">Login</button>
                 <br>
@@ -136,57 +136,52 @@
     </div>
 
     <?php
-    include 'config.php';
+    include './config.php';
 
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            
-            $email = $_POST["email"];
-            $password = $_POST["password"];
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
         
-            $mysqli = new mysqli($servername, $username, $password, $database);
-        
-            if ($mysqli->connect_error) {
-                die("Connection failed: " . $mysqli->connect_error);
+        $email = htmlspecialchars($_POST["email"]); // Use htmlspecialchars to prevent XSS attacks
+        $usr_password = htmlspecialchars($_POST["usr_password"]); // Use htmlspecialchars to prevent XSS attacks
+
+        $mysqli = new mysqli($servername, $username, $password, $database);
+
+        if ($mysqli->connect_error) {
+            die("Connection failed: " . $mysqli->connect_error);
+        }
+
+        $stmt = $mysqli->prepare("SELECT id, usr_password FROM Users WHERE email = ?");
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        $stmt->store_result();
+        $num_rows = $stmt->num_rows;
+
+        if ($num_rows > 0) {
+
+            $stmt->bind_result($id,$hashed_password);
+            $stmt->fetch();
+
+            echo "Hashed password from database: " . $hashed_password . "<br>";
+
+
+            if (password_verify($usr_password, $hashed_password)) {
+
+                session_start();
+                $_SESSION["loggedin"] = true;
+                $_SESSION["user"] = $id;                         
+                
+                header("location: /project-ecommerce/dashboard.php"); // Use absolute path
+            } else {
+                echo "<p style='color: green; text-align:center; font-size: 80px; color: #f44336;margin: 100px; font-weight: bold;'>Invalid username and password combination.</p>";
             }
-        
-            $stmt = $mysqli->prepare("SELECT id,password FROM Users WHERE email = ?");
-            $stmt->bind_param("s", $email);
-            $stmt->execute();
-            $stmt->store_result();
-            $num_rows = $stmt->num_rows;
 
-            if ($num_rows > 0) {
-
-                $stmt->bind_result($id,$hashed_password_from_database);
-                $stmt->fetch();
-        
-                if (password_verify($password, $hashed_password_from_database)) {
-
-                    // Password is correct, so start a new session
-                    // $result = $stmt->get_result();
-                    // $user = $result->fetch_assoc();
-                    session_start();
-                    
-                    // // Store data in session variables
-                    $_SESSION["loggedin"] = true;
-                    $_SESSION["user"] = $id;                         
-                    
-                    // Redirect user to welcome page
-                    header("location: index.html");
-                } else {
-                    // Display an error message if password is not valid
-                    echo "<p style='color: green; text-align:center; font-size: 80px; color: #f44336;margin: 100px; font-weight: bold;'>Invalid username and password combination.</p>";
-                }
-
-            }
-            else {
-                // Display an error message if password is not valid
-                echo "Invalid username and password combination.";
-            }
-            $stmt->close();
-            $mysqli->close();
-        } 
-        ?>
+        }
+        else {
+            echo "Error";
+        }
+        $stmt->close();
+        $mysqli->close();
+    } 
+    ?>
     
     <!-- Footer -->
 

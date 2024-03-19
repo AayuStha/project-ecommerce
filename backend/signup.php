@@ -73,7 +73,7 @@
                 die("Connection failed: " . $conn->connect_error);
             }
 
-            $stmt = $conn->prepare("INSERT INTO users (firstname, lastname, email, number, password) VALUES (?, ?, ?, ?, ?)");
+            $stmt = $conn->prepare("INSERT INTO users (firstname, lastname, email, number, usr_password) VALUES (?, ?, ?, ?, ?)");
 
             $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
