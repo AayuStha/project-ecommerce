@@ -237,6 +237,9 @@
             <p class="copyright">© 2023 BagShop Nepal. All rights reserved. </p>
         </div>
     </div>
+
+    <script src="./js/button.js"></script>
+
     
 </body>
 </html>

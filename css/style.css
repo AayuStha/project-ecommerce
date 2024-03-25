@@ -76,11 +76,6 @@ p{
     justify-content: center !important;
     align-items: center !important;
 }
-.feature-item > img{
-    max-width: 100%;
-    height: auto;
-    
-}
 
 .feature-item h3 {
     color: black;
@@ -339,7 +334,7 @@ ul{
     margin-top: 20px;
 }
 .app-logo img{
-    width: 140px;
+    width: 150px;
 }
 .footer hr{
     border: none;
@@ -468,10 +463,6 @@ button:hover{
 /* media query for less than 500px */
 
 @media only screen and (max-width: 600px){
-    
-    .row{
-        text-align: center;
-    }
     .col-2, .col-3, .col-4{
         flex-basis:100% ;
     }
@@ -534,7 +525,7 @@ button:hover{
     justify-content: space-around;
     width: 2rem;
     height: 2rem;
-    background: #f4eef2;
+    background: transparent;
     box-shadow: none;
     cursor: pointer;
     padding: 0;
@@ -573,5 +564,16 @@ button:hover{
         margin-left: 300px;
         margin-top: -30px;
 
+    }
+     
+    .feature-item img {
+        width: 20%;  
+        height: 60px; 
+    }
+    .feature-item {
+        width: 100%; 
+    }
+    .app-logo{
+        margin-left: 50px;
     }
 }
