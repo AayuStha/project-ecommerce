@@ -1,3 +1,47 @@
+<?php
+    include './config.php';
+
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        
+        $email = htmlspecialchars($_POST["email"]); // Use htmlspecialchars to prevent XSS attacks
+        $usr_password = htmlspecialchars($_POST["usr_password"]); // Use htmlspecialchars to prevent XSS attacks
+
+        $mysqli = new mysqli($servername, $username, $password, $database);
+
+        if ($mysqli->connect_error) {
+            die("Connection failed: " . $mysqli->connect_error);
+        }
+
+        $stmt = $mysqli->prepare("SELECT id, usr_password FROM users WHERE email = ?");
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        $stmt->store_result();
+        $num_rows = $stmt->num_rows;
+
+        if ($num_rows > 0) {
+            $stmt->bind_result($id, $hashed_password);
+            $stmt->fetch();
+        
+            if (password_verify($usr_password, $hashed_password)) {
+                // The password is correct. Start a session and store the user's ID in the session.
+                session_start();
+                $_SESSION['user_id'] = $id;
+                // Redirect the user to the home page.
+                header('Location: /project-ecommerce/user/home.php');
+                exit;
+            } else {
+                // The password is incorrect.
+                echo 'Invalid password.';
+            }
+        } else {
+            // The email is invalid.
+            echo 'Invalid email.';
+        }
+        $stmt->close();
+        $mysqli->close();
+    } 
+    ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -126,68 +170,22 @@
     </div>
     <div class="form-container">
         <img src="/project-ecommerce/images/login.jpg" alt="login image">
-            <form class="login-form" method="POST" action="./login.php">
-                <h2>Login</h2>
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" required>
-                <label for="password">Password</label>
-                <input type="password" id="usr_password" name="usr_password" required>
-                <a href="#" class="forgot-password">Forgot password?</a>
-                <button type="submit">Login</button>
-                <br>
-                <br>
-                <p class="signup-text">Don't have an account? <a href="./signup.html">Sign up</a></p>
-            </form>
+        <form class="login-form" method="POST" action="./login.php">
+            <h2>Login</h2>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+            <label for="password">Password</label>
+            <input type="password" id="usr_password" name="usr_password" required>
+            <a href="#" class="forgot-password">Forgot password?</a>
+            <button type="submit">Login</button>
+            <br>
+            <br>
+            <p class="signup-text">Don't have an account? <a href="./signup.html">Sign up</a></p>
+        </form>
     </div>
-
-    <?php
-    include './config.php';
-
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        
-        $email = htmlspecialchars($_POST["email"]); // Use htmlspecialchars to prevent XSS attacks
-        $usr_password = htmlspecialchars($_POST["usr_password"]); // Use htmlspecialchars to prevent XSS attacks
-
-        $mysqli = new mysqli($servername, $username, $password, $database);
-
-        if ($mysqli->connect_error) {
-            die("Connection failed: " . $mysqli->connect_error);
-        }
-
-        $stmt = $mysqli->prepare("SELECT id, usr_password FROM Users WHERE email = ?");
-        $stmt->bind_param("s", $email);
-        $stmt->execute();
-        $stmt->store_result();
-        $num_rows = $stmt->num_rows;
-
-        if ($num_rows > 0) {
-
-            $stmt->bind_result($id,$hashed_password);
-            $stmt->fetch();
-
-            echo "Hashed password from database: " . $hashed_password . "<br>";
-
-
-            if (password_verify($usr_password, $hashed_password)) {
-
-                session_start();
-                $_SESSION["loggedin"] = true;
-                $_SESSION["user"] = $id;                         
-                
-                header("location: /project-ecommerce/dashboard.php"); // Use absolute path
-            } else {
-                echo "<p style='color: green; text-align:center; font-size: 80px; color: #f44336;margin: 100px; font-weight: bold;'>Invalid username and password combination.</p>";
-            }
-
-        }
-        else {
-            echo "Error";
-        }
-        $stmt->close();
-        $mysqli->close();
-    } 
-    ?>
-    
+    <?php if (isset($login_error)): ?>
+    <p><?php echo $login_error; ?></p>
+<?php endif; ?>
     <!-- Footer -->
 
     <div class="footer">
