@@ -34,6 +34,11 @@
                         <li><a href="/project-ecommerce/signup.html">Signup</a></li>
                     </ul>
                 </nav>
+                <button id="hamburger-menu" class="hamburger-menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
                 <!-- <img src="images/cart.png" width="30px" height="30px"alt="cart"> -->
             </div>
         </div>

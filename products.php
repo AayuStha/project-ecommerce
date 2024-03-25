@@ -60,9 +60,9 @@
                 </div>
                 <nav>
                     <ul id="items">
-                        <li><a href="/project-ecommerce/index.html" class="active">Home</a></li>
+                        <li><a href="/project-ecommerce/index.html">Home</a></li>
                         <li class = "dropdown">
-                            <a href="/project-ecommerce/products.php">Products</a>
+                            <a href="/project-ecommerce/products.php" class="active">Products</a>
                             <div class="dropdown-content">
                                 <a href="#">Travel</a>
                                 <a href="#">Work</a>
