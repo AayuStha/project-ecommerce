@@ -133,7 +133,7 @@ if (!$connection) {
             <div class="row">
                 <div class="feature-item">
                     <br>
-                    <img src="images/quality.png" alt="quality">
+                    <img src="../images/quality.png" alt="quality">
                     <br>
                     <h3>Quality</h3>
                     <p style="font-size: small;">Quality is at the heart of everything we offer. From meticulously sourced materials to rigorous manufacturing standards, we prioritize excellence to ensure each product meets your highest expectations. Shop with confidence, knowing that every item is crafted with durability, functionality, and style in mind.</p>
