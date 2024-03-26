@@ -11,7 +11,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
     <title>BagShop Nepal</title>
     
 </head>
@@ -33,6 +32,7 @@
                         <li><a href="/project-ecommerce/offers.html">Offers</a></li>
                         <li><a href="/project-ecommerce/login.php">Login</a></li>
                         <li><a href="/project-ecommerce/signup.html">Signup</a></li>
+                        
                     </ul>
                 </nav>
                 <button id="hamburger-menu" class="hamburger-menu">
@@ -40,7 +40,7 @@
                     <span></span>
                     <span></span>
                 </button>
-                <!-- <img src="images/cart.png" width="30px" height="30px"alt="cart"> -->
+                <a href="cart.php"><img src="images/cart.png" width="30px" height="30px"alt="cart"></a>
             </div>
             <hr id="hr">
             <br>
@@ -123,7 +123,7 @@
 
                 </div>
                 <div class="col-2">
-                    <p>Exclusively available on BagShop Nepal</p>
+                    Exclusively available on BagShop Nepal
                     <h1>Laptop Bag</h1>
                     <small>Elevate your work style with our sleek and durable laptop bags, designed for both fashion and function. Stay organized and professional on the go.</small>
                     <br>
@@ -181,20 +181,9 @@
             <p class="copyright">© 2023 BagShop Nepal. All rights reserved. </p>
         </div>
     </div>
-    <script>
-        document.querySelector('#hamburger-menu').addEventListener('click', function() {
-            var menu = document.querySelector('#hamburger-menu');
-            var spans = menu.querySelectorAll('span');
-            var items = document.querySelector('#items');
-            if (spans.length === 3) {
-                menu.innerHTML = '<btn style="color: black; font-size: 30px;">X</btn>'; 
-                items.style.display = 'block'; 
-            } else {
-                menu.innerHTML = '<span></span><span></span><span></span>';
-                items.style.display = 'none'; 
-            }
-        });
 
-    </script>
+    <script src="./js/button.js"></script>
+
+    
 </body>
 </html>

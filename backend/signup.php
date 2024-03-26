@@ -59,10 +59,10 @@
             $lastname = $_POST['lastname'];
             $email = $_POST['email'];
             $number = $_POST['number'];
-            $pass = $_POST['password'];
+            $usr_password = $_POST['password'];
             $confirm_password = $_POST['confirm_password'];
 
-            if ($pass != $confirm_password) {
+            if ($usr_password != $confirm_password) {
                 echo "Passwords do not match.";
                 exit();
             }
@@ -75,7 +75,7 @@
 
             $stmt = $conn->prepare("INSERT INTO users (firstname, lastname, email, number, usr_password) VALUES (?, ?, ?, ?, ?)");
 
-            $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+            $hashed_password = password_hash($usr_password, PASSWORD_DEFAULT);
 
             $stmt->bind_param("sssss", $firstname, $lastname, $email, $number, $hashed_password);
 

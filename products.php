@@ -11,7 +11,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
     <title>All Products - BagShop Nepal</title>
     <style>
     .searchbox{
@@ -60,9 +59,9 @@
                 </div>
                 <nav>
                     <ul id="items">
-                        <li><a href="/project-ecommerce/index.html" class="active">Home</a></li>
+                        <li><a href="/project-ecommerce/index.html">Home</a></li>
                         <li class = "dropdown">
-                            <a href="/project-ecommerce/products.php">Products</a>
+                            <a href="/project-ecommerce/products.php" class="active">Products</a>
                             <div class="dropdown-content">
                                 <a href="#">Travel</a>
                                 <a href="#">Work</a>
@@ -77,7 +76,12 @@
                         <li><a href="/project-ecommerce/signup.html">Signup</a></li>
                     </ul>
                 </nav>
-                <a href="/project-ecommerce/cart.php"><img src="/project-ecommerce/backend/uploads/cart.png" width="30px" height="30px"alt="cart"></a>
+                <button id="hamburger-menu" class="hamburger-menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <!-- <a href="/project-ecommerce/cart.php"><img src="/project-ecommerce/backend/uploads/cart.png" width="30px" height="30px"alt="cart"></a> -->
             </div>
         </div>
         <hr>
@@ -190,6 +194,9 @@
             <p class="copyright">© 2023 BagShop Nepal. All rights reserved. </p>
         </div>
     </div>
+
+    <script src="./js/button.js"></script>
+
     
 </body>
 </html>

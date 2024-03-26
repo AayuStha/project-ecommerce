@@ -50,6 +50,11 @@
                         <li><a href="/project-ecommerce/signup.html">Signup</a></li>
                     </ul>
                 </nav>
+                <button id="hamburger-menu" class="hamburger-menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
                 <!-- <img src="images/cart.png" width="30px" height="30px"alt="cart"> -->
             </div>
         </div>
@@ -140,6 +145,7 @@
             <p class="copyright">© 2023 BagShop Nepal. All rights reserved. </p>
         </div>
     </div>
+    <script src="./js/button.js"></script>
     
 </body>
 </html>
