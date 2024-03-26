@@ -21,9 +21,22 @@
     if (!isset($_SESSION['cart'])) {
         $_SESSION['cart'] = [];
     }
-    if (!isset($_SESSION['total_amount'])) {
-        $_SESSION['total_amount'] = 0;
+    // Add a product to the cart
+    if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['product_id'])) {
+        $product_id = $_POST['product_id'];
+        foreach ($products as $product) {
+            if ($product['id'] == $product_id) {
+                $_SESSION['cart'][] = $product;
+                break;
+            }
+        }
     }
+    // Calculate the total amount
+    $total_amount = 0;
+    foreach ($_SESSION['cart'] as $item) {
+        $total_amount += $item['price'];
+    }
+    $_SESSION['total_amount'] = $total_amount;
 
     // Handle the form submission
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {

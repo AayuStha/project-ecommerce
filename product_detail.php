@@ -17,37 +17,35 @@
     img {
         width: 250px;
         height: fixed;
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
+        flex: 1;
+    }
+    h1 {
+        font-size: 2em;
+        color: #333;
+    }
+    p {
+        font-size: 1.2em;
+        color: #666;
+    }
+    .price {
+        font-size: 1.5em;
+        color: green;
+    }
+    .buy-now-btn, .addtocart-btn {
+        display: inline-block;
+        background-color: #e44d26;
+        color: #fff;
+        padding: 10px 20px;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+        cursor: pointer;
+    }
+    @media screen and (max-width: 510px){   
+        h1{
+            margin-left: 6px;
         }
-        h1 {
-            font-size: 2em;
-            color: #333;
-        }
-        p {
-            font-size: 1.2em;
-            color: #666;
-        }
-        .price {
-            font-size: 1.5em;
-            color: green;
-        }
-        .buy-now-btn, .addtocart-btn {
-            display: inline-block;
-            background-color: #e44d26;
-            color: #fff;
-            padding: 10px 20px;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-            cursor: pointer;
-        }
-        @media screen and (max-width: 510px){   
-            h1{
-                margin-left: 6px;
-            }
-        }
+    }
 </style>
 
 </head>
