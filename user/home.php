@@ -62,7 +62,7 @@ if (!$connection) {
                                 if ($row) {
                                     $firstName = $row['firstname'];
                                     echo "<li class='username'>Howdy, $firstName</li>";
-                                    echo '<li><a href="/project-ecommerce/logout.php">Logout</a></li>';
+                                    echo '<li><a href="../user/logout.php">Logout</a></li>';
                                 } else {
                                     echo '<li><a href="/project-ecommerce/login.php">Login</a></li>';
                                     echo '<li><a href="/project-ecommerce/signup.html">Signup</a></li>';
