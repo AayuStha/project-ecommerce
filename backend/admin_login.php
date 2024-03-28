@@ -1,3 +1,28 @@
+<?php
+    session_start();
+
+    // Hardcoded username and password
+    $correct_username = 'admin';
+    $correct_password = 'aayu';
+
+    if(isset($_POST['username'], $_POST['password'])) {
+        // Trim the username and password
+        $username = trim($_POST['username']);
+        $password = trim($_POST['password']);
+
+        // Check if the entered username and password match the hardcoded values
+        if ($username === $correct_username && $password === $correct_password) {
+            // Store user data in the session
+            $_SESSION['username'] = $username;
+
+            // Redirect to admin panel
+            header('Location: admin_panel.php');
+            exit;
+        } else {
+            $error = "Invalid username or password.";
+        }
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,71 +37,26 @@
     
     <title>BSN - Admin Panel</title>
     <link rel="stylesheet" href="admin.css">
+    <style>.error{color: #af0505;}</style>
     
 </head>
 <body>
     <div class="login-box">
         <h1>BagShopNepal</h1>
         <h2>Admin Login</h2>
-        <?php
-        // Connect to the database
-        ob_start();
-        include '../config.php';
-
-        ini_set('display_errors', 1);
-        ini_set('display_startup_errors', 1);
-        error_reporting(E_ALL);
-
-        $db = new mysqli($servername, $username, $password, $database);
-
-        // Check connection
-        if ($db->connect_error) {
-            die("Connection failed: " . $db->connect_error);
-        }
-
-        if(isset($_POST['username'], $_POST['password'])) {
-            $username = $_POST['username'];
-            $password = password_hash($_POST['password']);
-
-            // Prepare the SQL query
-            $sql = "SELECT password FROM admins WHERE username = ?";
-
-            // Prepare the statement
-            $stmt = $db->prepare($sql);
-
-            // Bind the parameters
-            $stmt->bind_param('s', $username);
-
-            // Execute the statement
-            $stmt->execute();
-
-            // Get the result
-            $result = $stmt->get_result();
-
-            if ($result->num_rows > 0) {
-                $row = $result->fetch_assoc();
-                if (password_verify($password, $row['password'])) {
-                    header('Location: admin_panel.php');
-                    exit;
-                } else {
-                    $error = "Invalid username or password.";
-                }
-            } else {
-                $error = "Invalid username or password.";
-            }
-
-            $stmt->close();
-        }
-
-        $db->close();
-        ?>
-        <form action="admin_panel.php" method="post">
+        
+        <form action="admin_login.php" method="post">
             <label for="username">Username:</label>
             <input type="text" id="username" name="username">
             <label for="password">Password:</label>
             <input type="password" id="password" name="password">
             <button type="submit">Login</button>
         </form>
+        <?php
+            if(isset($error)) {
+                echo '<div class="error">' . $error . '</div>';
+            }
+        ?>
     </div>
 </body>
 </html>

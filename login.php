@@ -31,11 +31,11 @@
                 exit;
             } else {
                 // The password is incorrect.
-                echo 'Invalid password.';
+                $error ='Invalid password.';
             }
         } else {
             // The email is invalid.
-            echo 'Invalid email.';
+            $error = 'Invalid email.';
         }
         $stmt->close();
         $mysqli->close();
@@ -136,6 +136,9 @@
         .login-form{
             width:70%;
         }
+        .error{
+            color: #af0505;
+        }
     }
     </style>
 </head>
@@ -181,11 +184,15 @@
             <br>
             <br>
             <p class="signup-text">Don't have an account? <a href="./signup.html">Sign up</a></p>
+            <?php
+    if(isset($error)) {
+        echo '<div class="error">' . $error . '</div>';
+    }
+    ?>
         </form>
+        
     </div>
-    <?php if (isset($login_error)): ?>
-    <p><?php echo $login_error; ?></p>
-<?php endif; ?>
+    
     <!-- Footer -->
 
     <div class="footer">
