@@ -3,7 +3,7 @@
 
     // Hardcoded username and password
     $correct_username = 'admin';
-    $correct_password = 'aayu';
+    $correct_password = 'admin';
 
     if(isset($_POST['username'], $_POST['password'])) {
         // Trim the username and password
