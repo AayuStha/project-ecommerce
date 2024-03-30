@@ -72,7 +72,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->bind_param("sssss", $firstname, $lastname, $email, $number, $hashed_password);
 
     if ($stmt->execute()) {
-        echo "<h1>New record created successfully<h1>";
+        echo '<h1 style="text-align: center; margin: 15px auto">New record created successfully<h1>';
 
         // Create a new PHPMailer instance
         $mail = new PHPMailer;
@@ -95,25 +95,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Set the subject line
         $mail->Subject = 'Thank you for registering at BagShop Nepal';
 
+        // Attach the logo
+        $mail->AddEmbeddedImage('../images/logo.png', 'logo');
+
         // Set the body
-        $mail->Body = "Dear $firstname,
+        $mail->isHTML(true);
+        $mail->Body = "
+            <h2>Dear $firstname,</h2>
+            <p>Thank you for registering at Bag Sales Nepal. Here are your details:</p>
+            <p>Name: $firstname $lastname</p>
+            <p>Email: $email</p>
+            <p>Phone Number: $number</p>
+            <p>If you have any questions, feel free to contact us.</p>
+            <p>Best,</p>
+            <p>Bag Sales Nepal Team</p>
+            <img src='cid:logo' alt='Logo' style='width: 300px; height: 70px;'><br>
 
-        Thank you for registering at BagShop Nepal. Here are your details:
+        ";
 
-        Name: $firstname $lastname
-        Email: $email
-        Phone Number: $number
-
-        If you have any questions, feel free to contact us.
-
-        Best,
-        BagShop Nepal Team";
 
         // Send the email
         if (!$mail->send()) {
             echo 'Mailer Error: ' . $mail->ErrorInfo;
         } else {
-            echo 'Message sent!';
+            echo '<h1 style="text-align: center; margin: 15px auto">Message sent!</h1>';
         }
     } else {
         echo "Error: " . $stmt->error;
