@@ -31,16 +31,39 @@
         font-size: 1.5em;
         color: green;
     }
-    .buy-now-btn, .addtocart-btn {
-        display: inline-block;
-        background-color: #e44d26;
-        color: #fff;
-        padding: 10px 20px;
-        text-decoration: none;
-        border-radius: 5px;
-        transition: background-color 0.3s ease;
-        cursor: pointer;
+    form {
+    display: flex;
+    align-items: center;
     }
+
+    input[type="text"] {
+    width: 50px;
+    margin-top: 30px;
+    text-decoration: none;
+    text-align: center;
+    background: transparent;
+    }
+    #btn{
+        border: none;
+        width: 40px;
+        height: 45px;
+        background-color: radial-gradient(#f4eef2,#f4eef2);
+    }
+    .addtocart-btn {
+    background-color: green;
+    border: none;
+    color: #333;
+    padding: 10px 30px;
+    width: 200px;
+    height: 50px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-top: 29px;
+    margin-left: 15px;
+    cursor: pointer;
+}
     @media screen and (max-width: 510px){   
         h1{
             margin-left: 6px;
@@ -100,12 +123,15 @@
                 <h1><?php echo $product['name']; ?></h1>
                 <p><?php echo $product['description']; ?></p>
                 <br>
-                <p class="price">Price: 🇳🇵<?php echo $product['price']; ?></p>
+                <p class="price">Price: 🇳🇵 <?php echo $product['price']; ?></p>
                 <br>
-                <button class="buy-now-btn">Buy Now</button>
-                <a href="/project-ecommerce/cart.php"><button class="addtocart-btn">Add to Cart</button></a>
-
-
+                <form action="cart.php" method="POST">
+                    <input type="hidden" name="product_id" value="<?php echo $product['id']; ?>">
+                    <button type="button" onclick="decrementValue()" id="btn">-</button>
+                    <input type="text" name="quantity" value="1" id="number">
+                    <button type="button" onclick="incrementValue()"id="btn">+</button>
+                    <a href="/project-ecommerce/cart.php"><button class="addtocart-btn">Add to Cart</button></a>
+                </form>
                 <br>
                 <br>
         </div>
@@ -158,6 +184,21 @@
             <p class="copyright">© 2023 BagShop Nepal. All rights reserved. </p>
         </div>
     </div>
-    
+    <script>
+        function incrementValue() {
+    var value = parseInt(document.getElementById('number').value, 10);
+    value = isNaN(value) ? 0 : value;
+    value++;
+    document.getElementById('number').value = value;
+}
+
+function decrementValue() {
+    var value = parseInt(document.getElementById('number').value, 10);
+    value = isNaN(value) ? 0 : value;
+    value < 1 ? value = 1 : '';
+    value--;
+    document.getElementById('number').value = value;
+}
+    </script>
 </body>
 </html>

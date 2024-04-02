@@ -1,63 +1,60 @@
-<<<<<<< HEAD
 <?php
-    session_start();
+session_start();
 
-    include 'config.php';
+include 'config.php';
 
-    $db = new mysqli($servername, $username, $password, $database);
+$db = new mysqli($servername, $username, $password, $database);
 
-    // Check connection
-    if ($db->connect_error) {
-        die("Connection failed: " . $db->connect_error);
+// Check connection
+if ($db->connect_error) {
+    die("Connection failed: " . $db->connect_error);
+}
+
+// Get the products from the database
+$result = $db->query('SELECT * FROM products');
+if (!$result) {
+    die("Error executing query: " . $db->error);
+}
+$products = [];
+while ($row = $result->fetch_assoc()) {
+    $products[$row['id']] = $row;
+}
+
+// Initialize the cart and the total amount
+if (!isset($_SESSION['cart'])) {
+    $_SESSION['cart'] = [];
+}
+
+// Handle the form submission
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['product_id'])) {
+    $productId = $_POST['product_id'];
+
+    // Add the product to the cart and update the total amount
+    if (!isset($products[$productId])) {
+        die("Invalid product ID: $productId");
     }
-
-    // Get the products from the database
-    $result = $db->query('SELECT * FROM products');
-    $products = [];
-    while ($row = $result->fetch_assoc()) {
-        $products[$row['id']] = $row;
+    if (!isset($_SESSION['cart'][$productId])) {
+        $_SESSION['cart'][$productId] = 0;
     }
+    $_SESSION['cart'][$productId]++;
+    $_SESSION['total_amount'] += $products[$productId]['price'];
 
-    // Initialize the cart and the total amount
-    if (!isset($_SESSION['cart'])) {
-        $_SESSION['cart'] = [];
-    }
-    // Add a product to the cart
-    if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['product_id'])) {
-        $product_id = $_POST['product_id'];
-        foreach ($products as $product) {
-            if ($product['id'] == $product_id) {
-                $_SESSION['cart'][] = $product;
-                break;
-            }
-        }
-    }
-    // Calculate the total amount
-    $total_amount = 0;
-    foreach ($_SESSION['cart'] as $item) {
-        $total_amount += $item['price'];
-    }
-    $_SESSION['total_amount'] = $total_amount;
+    // Redirect to the cart page
+    header('Location: cart.php');
+    exit;
+}
 
-    // Handle the form submission
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $productId = $_POST['product_id'];
-
-        // Add the product to the cart and update the total amount
-        if (!isset($_SESSION['cart'][$productId])) {
-            $_SESSION['cart'][$productId] = 0;
-        }
-        $_SESSION['cart'][$productId]++;
-        $_SESSION['total_amount'] += $products[$productId]['price'];
-
-        // Redirect to the cart page
-        header('Location: cart.php');
-        exit;
+// Calculate the total amount
+$total_amount = 0;
+foreach ($_SESSION['cart'] as $productId => $quantity) {
+    if (!isset($products[$productId])) {
+        die("Invalid product ID in cart: $productId");
     }
+    $total_amount += $products[$productId]['price'] * $quantity;
+}
+$_SESSION['total_amount'] = $total_amount;
 ?>
 
-=======
->>>>>>> ebad374df51cabe2510b2195524b73bd448d3049
 <!DOCTYPE html>
 <html lang="en">
 <head>
