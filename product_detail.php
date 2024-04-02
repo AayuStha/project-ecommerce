@@ -90,6 +90,7 @@
                         <li><a href="/project-ecommerce/offers.html">Offers</a></li>
                         <li><a href="/project-ecommerce/login.php">Login</a></li>
                         <li><a href="/project-ecommerce/signup.html">Signup</a></li>
+                        <a href="cart.php"><i class="fa-solid fa-cart-shopping"></i></a>
                     </ul>
                 </nav>
                 <!-- <img src="images/cart.png" width="30px" height="30px"alt="cart"> -->

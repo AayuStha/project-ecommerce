@@ -160,6 +160,7 @@
                         <li><a href="/project-ecommerce/offers.html">Offers</a></li>
                         <li><a href="/project-ecommerce/backend/contact.php" class="active">Login</a></li>
                         <li><a href="/project-ecommerce/signup.html">Signup</a></li>
+                        <a href="cart.php"><i class="fa-solid fa-cart-shopping"></i></a>
                     </ul>
                 </nav>
                 <button id="hamburger-menu" class="hamburger-menu">
