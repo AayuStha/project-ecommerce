@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <title>All Products - BagShop Nepal</title>
+    <title>All Products - BagSales Nepal</title>
     <style>
     .searchbox{
         position: relative;
@@ -54,7 +54,7 @@
             <div class="navbar">
                 <div class="logo">
                     <a href="/project-ecommerce/index.html">
-                        BagShopNepal
+                        BagSalesNepal
                     </a>
                 </div>
                 <nav>
@@ -192,7 +192,7 @@
                 </table>    
             </div>
             <hr>
-            <p class="copyright">© 2023 BagShop Nepal. All rights reserved. </p>
+            <p class="copyright">© 2023 BagSales Nepal. All rights reserved. </p>
         </div>
     </div>
 

@@ -23,7 +23,7 @@ if (!$connection) {
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <title>BagShop Nepal</title>
+    <title>BagSales Nepal</title>
     <style>
         .username {
             color: #cd34ef;
@@ -42,7 +42,7 @@ if (!$connection) {
             <div class="navbar">
                 <div class="logo">
                     <a href="/project-ecommerce/index.html">
-                        BagShopNepal
+                        BagSalesNepal
                     </a>
                 </div>
                 <nav>
@@ -52,6 +52,7 @@ if (!$connection) {
                     <li><a href="/project-ecommerce/about.html">About</a></li>
                     <li><a href="project-ecommerce/contact.html">Contact</a></li>
                     <li><a href="/project-ecommerce/offers.html">Offers</a></li>
+                    <a href="cart.php"><i class="fa-solid fa-cart-shopping"></i></a>
                     <?php
                         if (isset($_SESSION['user_id']) && !empty($_SESSION['user_id'])) {
                             $query = "SELECT firstname FROM users WHERE id = {$_SESSION['user_id']}";
@@ -165,7 +166,7 @@ if (!$connection) {
 
                 </div>
                 <div class="col-2">
-                    Exclusively available on BagShop Nepal
+                    Exclusively available on BagSales Nepal
                     <h1>Laptop Bag</h1>
                     <small>Elevate your work style with our sleek and durable laptop bags, designed for both fashion and function. Stay organized and professional on the go.</small>
                     <br>
@@ -220,7 +221,7 @@ if (!$connection) {
                 </table>    
             </div>
             <hr>
-            <p class="copyright">© 2023 BagShop Nepal. All rights reserved. </p>
+            <p class="copyright">© 2023 BagSales Nepal. All rights reserved. </p>
         </div>
     </div>
 

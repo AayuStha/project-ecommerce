@@ -81,19 +81,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mail->isSMTP();
         $mail->Host = 'smtp.gmail.com';
         $mail->SMTPAuth = true;
-        $mail->Username = 'a.ius.xtha@gmail.com';
+        $mail->Username = 'bagsalesnepal@gmail.com';
         $mail->Password = 'msxk baxf frvh knou';
         $mail->SMTPSecure = 'tls';
         $mail->Port = 587;
 
         // Set who the message is to be sent from
-        $mail->setFrom('a.ius.xtha@gmail.com', 'BagShop Nepal');
+        $mail->setFrom('bagsalesnepal@gmail.com', 'Bag Sales Nepal');
 
         // Set who the message is to be sent to
         $mail->addAddress($email, $firstname . ' ' . $lastname);
 
         // Set the subject line
-        $mail->Subject = 'Thank you for registering at BagShop Nepal';
+        $mail->Subject = 'Thank you for registering at Bag Sales Nepal';
 
         // Attach the logo
         $mail->AddEmbeddedImage('../images/logo.png', 'logo');

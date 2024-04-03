@@ -3,4 +3,4 @@
 3. auto-generated email when buying
 4. buy now page with proper ui
 5. title of all pages
-6. contact form db
+6. contact form db //done

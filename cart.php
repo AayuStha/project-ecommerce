@@ -68,7 +68,7 @@ $_SESSION['total_amount'] = $total_amount;
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <title>BagShop Nepal</title>
+    <title>BagSales Nepal</title>
     <style>
         table {
             width: 100%;
@@ -92,7 +92,7 @@ $_SESSION['total_amount'] = $total_amount;
             <div class="navbar">
                 <div class="logo">
                     <a href="/project-ecommerce/index.html">
-                        BagShopNepal
+                        BagSalesNepal
                     </a>
                 </div>
                 <nav>

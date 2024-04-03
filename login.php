@@ -56,7 +56,7 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <title>BagShop Nepal</title>
+    <title>BagSales Nepal</title>
     <style>
 
     .navcont{
@@ -148,7 +148,7 @@
             <div class="navbar">
                 <div class="logo">
                     <a href="/project-ecommerce/index.html">
-                        BagShopNepal
+                        BagSalesNepal
                     </a>
                 </div>
                 <nav>
@@ -240,12 +240,10 @@
             </div>
             <br>
             <hr>
-            <p class="copyright">© 2023 BagShop Nepal. All rights reserved. </p>
+            <p class="copyright">© 2023 BagSales Nepal. All rights reserved. </p>
         </div>
     </div>
 
     <script src="./js/button.js"></script>
-
-    
 </body>
 </html>

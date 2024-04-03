@@ -4,50 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="css/style.css" class="css">
+    <link rel="stylesheet" href="../css/style.css" class="css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Sign Up - BagSalesNepal</title>
     
-    <title>BagSales Nepal</title>
-
-    <style>
-        h2{
-            text-align: center;
-            padding: 8vw;
-            font-size: 5vw;
-        }
-        .btn{
-            border: 1px solid black;
-            margin-left: 47vw;
-            text-align: center;
-            line-height: 40px;
-            cursor: pointer;
-        }
-    </style>
 </head>
 <body>
-    <div class="header">
-        <div class="container">
+<div class="header">
+        <div class="navcont">
             <div class="navbar">
                 <div class="logo">
-                    <a href="/project-ecommerce/index.html">
+                    <a href="../index.html">
                         BagSalesNepal
                     </a>
                 </div>
                 <nav>
                     <ul id="items">
-                        <li><a href="/project-ecommerce/index.html" class="active">Home</a></li>
-                        <li><a href="/project-ecommerce/products.php">Products</a></li>
-                        <li><a href="/project-ecommerce/about.html">About</a></li>
-                        <li><a href="/project-ecommerce/contact.html">Contact</a></li>
-                        <li><a href="/project-ecommerce/offers.html">Offers</a></li>
-                        <li><a href="/project-ecommerce/login.php">Login</a></li>
-                        <li><a href="/project-ecommerce/signup.html">Signup</a></li>
-                        <a href="cart.php"><i class="fa-solid fa-cart-shopping"></i></a>
+                        <li><a href="../index.html" >Home</a></li>
+                        <li><a href="../products.php">Products</a></li>
+                        <li><a href="../about.html">About</a></li>
+                        <li><a href="../contact.html"  class="active">Contact</a></li>
+                        <li><a href="../offers.html">Offers</a></li>
+                        <li><a href="../login.php" >Login</a></li>
+                        <li><a href="../signup.html">Signup</a></li>
                     </ul>
                 </nav>
                 <button id="hamburger-menu" class="hamburger-menu">
@@ -59,44 +43,39 @@
             </div>
         </div>
     </div>
-    <br>
 
-            <?php
-                if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                    $email = $_POST["email"];
+<?php
 
-                    if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                        include 'config.php';
+include '../config.php';
 
-                        // Create a new mysqli instance
-                        $conn = new mysqli($servername, $username, $password, $database);
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $phone = $_POST['phone'];
+    $subject = $_POST['subject'];
+    $message = $_POST['message'];
 
-                        // Check the connection
-                        if ($conn->connect_error) {
-                            die("Connection failed: " . $conn->connect_error);
-                        }
+    $conn = new mysqli($servername, $username, $password, $database);
+            
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
 
-                        // Prepare the SQL statement
-                        $stmt = $conn->prepare("INSERT INTO subscribers (email) VALUES (?)");
-                        $stmt->bind_param("s", $email);
+    $stmt = $conn->prepare("INSERT INTO contactForm (name, email, phone, subject, message) VALUES (?, ?, ?, ?, ?)");
 
-                        // Execute the SQL statement
-                        if ($stmt->execute()) {
-                            echo "<h2>Thank you for subscribing!</h2>";
-                        } else {
-                            echo "Error: " . $stmt->error;
-                        }
+    $stmt->bind_param("sssss", $name, $email, $phone, $subject, $message);
 
-                        // Close the statement and the connection
-                        $stmt->close();
-                        $conn->close();
-                    } else {
-                        echo "<h2>Invalid email address.</h2>";
-                    }
-                }
-            ?>
-            <a href="/project-ecommerce/index.html" class="btn"><i class="fa-solid fa-arrow-left"> Back</i></a>
+    if ($stmt->execute()) {
+        echo '<h1 style="text-align: center; margin: 150px auto">Thank you for contacting us.<h1>';
 
+    }
+
+    // Close the statement
+    $stmt->close();
+
+    $conn->close();
+}
+?>
 <!-- Footer -->
 
     <div class="footer">
@@ -112,7 +91,7 @@
                 </div>
                 <div class="footer-col-2">
                     <h3>Newsletter</h3>
-                    <form action="../project-ecommerce/subscribe.php" method="post">
+                    <form action="..../subscribe.php" method="post">
                         <input type="email" name="email" placeholder="Enter your email">
                         <button type="submit">Subscribe</button>
                     </form>
@@ -142,10 +121,12 @@
                 </table>    
             </div>
             <hr>
-            <p class="copyright">© 2023 BagSales Nepal. All rights reserved. </p>
+            <p class="copyright">© 2023 BagShop Nepal. All rights reserved. </p>
         </div>
     </div>
+
     <script src="./js/button.js"></script>
+
     
 </body>
 </html>
