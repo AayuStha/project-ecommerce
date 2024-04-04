@@ -52,7 +52,7 @@ if (!$connection) {
                     <li><a href="/project-ecommerce/about.html">About</a></li>
                     <li><a href="project-ecommerce/contact.html">Contact</a></li>
                     <li><a href="/project-ecommerce/offers.html">Offers</a></li>
-                    <a href="cart.php"><i class="fa-solid fa-cart-shopping"></i></a>
+                    <!-- <a href="cart.php"><i class="fa-solid fa-cart-shopping"></i></a> -->
                     <?php
                         if (isset($_SESSION['user_id']) && !empty($_SESSION['user_id'])) {
                             $query = "SELECT firstname FROM users WHERE id = {$_SESSION['user_id']}";
@@ -83,7 +83,8 @@ if (!$connection) {
                     <span></span>
                     <span></span>
                 </button>
-                <a href="cart.php"><img src="images/cart.png" width="30px" height="30px"alt="cart"></a>
+                <a href="cart.php"><i class="fa-solid fa-cart-shopping"></i></a>
+                
             </div>
             <hr id="hr">
             <br>

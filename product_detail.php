@@ -9,7 +9,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <title>BagSales Nepal</title>
@@ -90,7 +89,7 @@
                         <li><a href="/project-ecommerce/offers.html">Offers</a></li>
                         <li><a href="/project-ecommerce/login.php">Login</a></li>
                         <li><a href="/project-ecommerce/signup.html">Signup</a></li>
-                        <a href="cart.php"><i class="fa-solid fa-cart-shopping"></i></a>
+                        <a href="./cart/cart.php"><i class="fa-solid fa-cart-shopping"></i></a>
                     </ul>
                 </nav>
                 <!-- <img src="images/cart.png" width="30px" height="30px"alt="cart"> -->
@@ -126,12 +125,12 @@
                 <br>
                 <p class="price">Price: 🇳🇵 <?php echo $product['price']; ?></p>
                 <br>
-                <form action="cart.php" method="POST">
+                <form action="./cart/cart.php" method="POST">
                     <input type="hidden" name="product_id" value="<?php echo $product['id']; ?>">
                     <button type="button" onclick="decrementValue()" id="btn">-</button>
                     <input type="text" name="quantity" value="1" id="number">
                     <button type="button" onclick="incrementValue()"id="btn">+</button>
-                    <a href="/project-ecommerce/cart.php"><button class="addtocart-btn">Add to Cart</button></a>
+                    <button type="submit" class="addtocart-btn">Add to Cart</button>
                 </form>
                 <br>
                 <br>
@@ -200,6 +199,8 @@ function decrementValue() {
     value--;
     document.getElementById('number').value = value;
 }
+
+    
     </script>
 </body>
 </html>
