@@ -156,7 +156,6 @@ if (!empty($_SESSION['cart'])) {
             margin-top: 90px;
         }
     </style>
-    
 </head>
 <body>
     <div class="header">
@@ -186,13 +185,11 @@ if (!empty($_SESSION['cart'])) {
                     <span></span>
                     <span></span>
                 </button>
-
             </div>          
         </div>
     </div>
     <br>
-</head>
-<body>
+
     <?php if (!empty($_SESSION['cart'])): ?>
         <table>
             <tr>
