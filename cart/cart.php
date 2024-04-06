@@ -212,7 +212,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </tr>
             <?php endforeach; ?>
         </table>
-        <button id="checkout">Checkout</button>
+        <form action="checkout.php" method="post">
+            <button id="checkout">Checkout</button>
+        </form>
     <?php else: ?>
         <p id="para">Your cart is empty.</p>
     <?php endif; ?>
