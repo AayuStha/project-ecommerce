@@ -83,7 +83,7 @@ if (!$connection) {
                     <span></span>
                     <span></span>
                 </button>
-                <a href="cart.php"><i class="fa-solid fa-cart-shopping"></i></a>
+                <a href="../cart/cart.php"><i class="fa-solid fa-cart-shopping"></i></a>
                 
             </div>
             <hr id="hr">

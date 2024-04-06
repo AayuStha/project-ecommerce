@@ -8,6 +8,8 @@ if (!$conn) {
     die("ERROR: Could not connect. " . mysqli_connect_error());
 }
 
+
+
 // Check if the form was submitted
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Get the product ID and quantity from the form
@@ -212,8 +214,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </tr>
             <?php endforeach; ?>
         </table>
-        <form action="checkout.php" method="post">
-            <button id="checkout">Checkout</button>
+        <form method="post" action="./checkout.php">
+            <input type="hidden" name="product" value="your_product">
+            <button type="submit" name="checkout">Checkout</button>
         </form>
     <?php else: ?>
         <p id="para">Your cart is empty.</p>

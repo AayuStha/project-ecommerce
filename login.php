@@ -1,4 +1,12 @@
 <?php
+
+    session_start(); // Start the session at the top of your script
+
+    if (isset($_SESSION['user_id'])) {
+        // The user is logged in. Redirect them to the home page.
+        header('Location: /project-ecommerce/user/home.php');
+        exit;
+    }
     include './config.php';
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
