@@ -92,7 +92,6 @@ table td, table th {
             <tr>
                 <th>Product Name</th>
                 <th>Price</th>
-                <th>Rating</th>
                 <th>Description</th>
                 <th>Image</th>
                 <th>Actions</th>
@@ -116,7 +115,6 @@ table td, table th {
                         echo "<tr>";
                         echo "<td>" . $row["name"] . "</td>";
                         echo "<td>" . $row["price"] . "</td>";
-                        echo "<td>" . $row["rating"] . "/5</td>";
                         echo "<td>" . $row["description"] . "</td>";
                         echo "<td><img src='uploads/" . $row["image"] . "' width='100' '></td>";
                         echo "<td>";

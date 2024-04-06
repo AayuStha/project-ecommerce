@@ -114,12 +114,11 @@
             $id = $_POST['id'];
             $name = $_POST['name'];
             $price = $_POST['price'];
-            $rating = $_POST['rating'];
             $description = $_POST['description'];
 
-            $stmt = $db->prepare("UPDATE products SET name = ?, price = ?, rating = ?, description = ? WHERE id = ?");
+            $stmt = $db->prepare("UPDATE products SET name = ?, price = ?, description = ? WHERE id = ?");
 
-            $stmt->bind_param("ssssi", $name, $price, $rating, $description, $id);
+            $stmt->bind_param("sssi", $name, $price, $description, $id);
 
             if ($stmt->execute()) {
 
@@ -147,8 +146,6 @@
                 <input type="text" id="name" name="name" value="<?php echo $product['name']; ?>">
                 <label for="price">Price:</label>
                 <input type="text" id="price" name="price" value="<?php echo $product['price']; ?>">
-                <label for="rating">Rating:</label>
-                <input type="text" id="rating" name="rating" value="<?php echo $product['rating']; ?>">
                 <label for="description">Description:</label>
                 <textarea id="description" name="description"><?php echo $product['description']; ?></textarea>
                 <input type="submit" value="Update">

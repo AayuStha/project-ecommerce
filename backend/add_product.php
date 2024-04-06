@@ -98,16 +98,6 @@
             <label for="price">Price:</label><br>
             <input type="text" id="price" name="price" required><br>
 
-            <label for="rating">Rating:</label><br>
-            <select id="rating" name="rating" required>
-                <option value="">Select a rating</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-            </select><br>
-
             <label for="description">Description:</label><br>
             <textarea id="description" name="description" required></textarea><br>
 

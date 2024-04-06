@@ -8,7 +8,6 @@ if ($db->connect_error) {
 
 $name = $_POST['name'];
 $price = $_POST['price'];
-$rating = $_POST['rating'];
 $description = $_POST['description'];
 
 if (is_uploaded_file($_FILES['image']['tmp_name'])) {
@@ -20,9 +19,9 @@ if (is_uploaded_file($_FILES['image']['tmp_name'])) {
 
     if (move_uploaded_file($_FILES['image']['tmp_name'], $upload_file)) {
 
-        $stmt = $db->prepare("INSERT INTO products (name, price, rating, description, image) VALUES (?, ?, ?, ?, ?)");
+        $stmt = $db->prepare("INSERT INTO products (name, price, description, image) VALUES (?, ?, ?, ?)");
 
-        $stmt->bind_param("sssss", $name, $price, $rating, $description, basename($_FILES['image']['name']));
+        $stmt->bind_param("ssss", $name, $price, $description, basename($_FILES['image']['name']));
 
         if ($stmt->execute()) {
 
