@@ -31,6 +31,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         'image' => "../backend/uploads/" . $product['image'],
     ];
 }
+
+$totalPrice = 0;
+if (!empty($_SESSION['cart'])) {
+    foreach ($_SESSION['cart'] as $item) {
+        $totalPrice += $item['price'] * $item['quantity'];
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -69,7 +76,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             height: 90px;
         }
         #para{
-            margin: 10vw;
+            margin: 100vw;
             font-size: 30px;
             font-weight: 800;
             text-align: center;
@@ -143,6 +150,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         .remove{
             border: none;
         }
+        #total-price{
+            text-align: center;
+            font-family: 'Comic Sans Ms';
+            margin-top: 90px;
+        }
     </style>
     
 </head>
@@ -214,9 +226,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </tr>
             <?php endforeach; ?>
         </table>
+
+        <div id="total-price">
+            <h2>Total price till now: <?php echo $totalPrice; ?></h2>
+        </div>
+
         <form method="post" action="./checkout.php">
             <input type="hidden" name="product" value="your_product">
-            <button type="submit" name="checkout">Checkout</button>
+            <button id="checkout" type="submit" name="checkout">Checkout</button>
         </form>
     <?php else: ?>
         <p id="para">Your cart is empty.</p>
