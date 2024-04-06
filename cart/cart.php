@@ -37,7 +37,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="../css/style.css" class="css">
+    <link rel="stylesheet" href=".././css/style.css" class="css">
+
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -47,8 +48,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <title>Cart - BagSales Nepal</title>
     <style>
         table {
-            width: 100%;
+            width: 80%;
             border-collapse: collapse;
+            margin-left: auto;
+            margin-right: auto;
         }
         th, td {
             border: 1px solid #000;
@@ -60,8 +63,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             color: white;
         }
         img {
-            width: 50px;
-            height: 50px;
+            width: 90px;
+            height: 90px;
         }
         #para{
             margin: 10vw;
@@ -79,8 +82,64 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             padding-bottom: 40px;
             padding-left: 12px;
             padding-right: 15px;
-            font-size: 18px; /* Adjust as needed */
+            font-size: 18px; 
             
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50; 
+            color: white; 
+            padding: 1px 2px; 
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px; 
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049; 
+        }
+
+        .num {
+            text-align: center;
+            font-size: 25px;
+        }
+
+        /* For tablets */
+        @media (max-width: 768px) {
+            table {
+                width: 90%;
+            }
+            input[type="submit"] {
+                padding: 5px 10px;
+                font-size: 14px;
+            }
+            #checkout {
+                width: 20%;
+                font-size: 16px;
+            }
+        }
+
+        /* For mobile phones */
+        @media (max-width: 480px) {
+            table {
+                width: 80%;
+            border-collapse: collapse;
+            margin-left: auto;
+            margin-right: auto;
+            }
+            input[type="submit"] {
+                padding: 5px 10px;
+                font-size: 12px;
+            }
+            #checkout {
+                width: 30%;
+                font-size: 14px;
+            }
+        }
+
+        .remove{
+            border: none;
         }
     </style>
     
@@ -130,8 +189,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </tr>
             <?php foreach ($_SESSION['cart'] as $item): ?>
                 <tr>
-                    <td><?php echo htmlspecialchars($item['name']); ?></td>
-                    <td>
+                    <td ><?php echo htmlspecialchars($item['name']); ?></td>
+                    <td class="num">
                         <?php echo htmlspecialchars($item['quantity']); ?>
                         <form method="POST" action="./increament.php">
                             <input type="hidden" name="product_id" value="<?php echo array_search($item, $_SESSION['cart']); ?>">
@@ -144,7 +203,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </td>
                     <td><?php echo htmlspecialchars($item['price'] * $item['quantity']); ?></td>
                     <td><img src="<?php echo htmlspecialchars($item['image']); ?>" alt="<?php echo htmlspecialchars($item['name']); ?>"></td>
-                    <td>
+                    <td class="remove">
                         <form method="POST" action="./remove.php">
                             <input type="hidden" name="product_id" value="<?php echo array_search($item, $_SESSION['cart']); ?>">
                             <input type="submit" value="Remove">
@@ -207,7 +266,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
     </div>
 
-    <script src="./js/button.js"></script>
+    <script src="../js/button.js"></script>
 
     
 </body>
