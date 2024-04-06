@@ -28,6 +28,9 @@
     #else{
         font-size: 20px;
     }
+    h1{
+        font-size: 20px;
+    }
     </style>
 </head>
 <body>
@@ -105,14 +108,7 @@
                 echo "<a href='product_detail.php?id=" . $row["id"] . "'>";
                 echo "<img src='backend/uploads/" . $row["image"] . "' width='50'' alt='Product Image'>";
                 echo "<h4>" . $row["name"] . "</h4>";
-                echo "<div class='rating'>";
-                for ($i = 0; $i < $row["rating"]; $i++) {
-                    echo "<i class='fa-solid fa-star'></i>";
-                }
-                for ($i = $row["rating"]; $i < 5; $i++) {
-                    echo "<i class='fa-regular fa-star'></i>";
-                }
-                echo "</div>";
+                echo "<h1> Rs " . $row["price"]. "</h1>";
                 echo "</a>";
                 echo "</div><br><br>";
             }

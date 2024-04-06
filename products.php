@@ -46,6 +46,9 @@
         opacity: 0;
         z-index: -1;
     }
+    h1{
+        font-size: 20px;
+    }
 
     </style>
 </head>
@@ -122,6 +125,7 @@
             echo "<a href='product_detail.php?id=" . $row["id"] . "'>";
             echo "<img src='backend/uploads/" . $row["image"] . "' width='100'' alt='Product Image'>";
             echo "<h4>" . $row["name"] . "</h4>";
+            echo "<h1> Rs " . $row["price"]. "</h1>";
             echo "</a>";
             echo "</div>";
 
