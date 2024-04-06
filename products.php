@@ -122,14 +122,6 @@
             echo "<a href='product_detail.php?id=" . $row["id"] . "'>";
             echo "<img src='backend/uploads/" . $row["image"] . "' width='100'' alt='Product Image'>";
             echo "<h4>" . $row["name"] . "</h4>";
-            echo "<div class='rating'>";
-            for ($i = 0; $i < $row["rating"]; $i++) {
-                echo "<i class='fa-solid fa-star'></i>";
-            }
-            for ($i = $row["rating"]; $i < 5; $i++) {
-                echo "<i class='fa-regular fa-star'></i>";
-            }
-            echo "</div>";
             echo "</a>";
             echo "</div>";
 
