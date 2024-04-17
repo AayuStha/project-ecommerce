@@ -24,7 +24,7 @@
             font-family: Arial, sans-serif;
         }
 
-        form {
+        #form {
             flex: 1;
             background-color: #fff;
             padding: 20px;
@@ -108,13 +108,31 @@
             $product = $_POST['product'];
         }
         // User is logged in, proceed to display the shipping details form
+
+        include '../config.php';
+        $conn = new mysqli($servername, $username, $password, $database);
+
+        if ($conn->connect_error) {
+            die("Connection failed: " . $db->connect_error);
+        }
+
+         // Fetch the user's email from the database
+        $user_id = $_SESSION['user_id'];
+        $query = "SELECT email, number FROM users WHERE id = ?";
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param("i", $user_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $user = $result->fetch_assoc();
+        $email = $user['email'];
+        $contact = $user['number'];
     ?>
-    <form action="success.php" method="post">
+    <form action="./orders.php" method="post" id="form">
         <h1>Please enter your shipping details</h1>
         <label for="email">Email:</label>
-        <input type="email" id="email" name="email"> <br> 
+        <input type="email" name="email" value="<?php echo $email; ?>"> <br>
         <label for="contact">Contact:</label>
-        <input type="number" id="contact" name="contact"> <br> 
+        <input type="number" id="contact" name="contact" value="<?php echo $contact; ?>"> <br> 
         <label for="city">City/District:</label>
         <input type="text" id="city" name="city"> <br> 
         <label for="address">Address:</label>

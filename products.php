@@ -63,15 +63,7 @@
                 <nav>
                     <ul id="items">
                         <li><a href="/project-ecommerce/index.html">Home</a></li>
-                        <li class = "dropdown">
-                            <a href="/project-ecommerce/products.php" class="active">Products</a>
-                            <div class="dropdown-content">
-                                <a href="#">Travel</a>
-                                <a href="#">Work</a>
-                                <a href="#">Everyday</a>
-                                <a href="#">All Products</a>
-                            </div>
-                        </li>
+                        <li><a href="/project-ecommerce/products.php" class="active">Products</a></li>
                         <li><a href="/project-ecommerce/about.html">About</a></li>
                         <li><a href="/project-ecommerce/contact.html">Contact</a></li>
                         <li><a href="/project-ecommerce/offers.html">Offers</a></li>
