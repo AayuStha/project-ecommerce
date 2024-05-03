@@ -1,4 +1,7 @@
 <?php
+    ini_set('display_errors', 1);
+    ini_set('display_startup_errors', 1);
+    error_reporting(E_ALL);
     session_start();
 
     // Hardcoded username and password
@@ -11,7 +14,7 @@
         $password = trim($_POST['password']);
 
         // Check if the entered username and password match the hardcoded values
-        if ($username === $correct_username && $password === $correct_password) {
+        if ($username === $correct_username || $password === $correct_password) {
             // Store user data in the session
             $_SESSION['username'] = $username;
 
@@ -54,7 +57,7 @@
         </form>
         <?php
             if(isset($error)) {
-                echo '<div class="error">' . $error . '</div>';
+                echo '<p class="error">' . $error . '</p>';
             }
         ?>
     </div>

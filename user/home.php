@@ -31,7 +31,46 @@ if (!$connection) {
             font-family: 'Comic Sans Ms';
         }
         .user-name:hover {
+        cursor: pointer;
+        }
+
+        .dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    margin-top: 10px;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    background-color: radial-gradient(#f4eef2,#f4eef2);;
+
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropbtn {
+    color: crimson;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
     cursor: pointer;
+}
+
+.fa-caret-down {
+    margin-left: 5px;
 }
         
     </style>
@@ -47,7 +86,7 @@ if (!$connection) {
                 </div>
                 <nav>
                 <ul id="items">
-                    <li><a href="/project-ecommerce/index.html" class="active">Home</a></li>
+                    <li><a href="/project-ecommerce/user/home.php" class="active">Home</a></li>
                     <li><a href="/project-ecommerce/products.php">Products</a></li>
                     <li><a href="/project-ecommerce/about.html">About</a></li>
                     <li><a href="project-ecommerce/contact.html">Contact</a></li>
@@ -62,8 +101,14 @@ if (!$connection) {
                                 $row = mysqli_fetch_assoc($result);
                                 if ($row) {
                                     $firstName = $row['firstname'];
-                                    echo "<li class='username'>Howdy, $firstName</li>";
-                                    echo '<li><a href="../user/logout.php">Logout</a></li>';
+                                    echo "<li class='dropdown'>";
+                                    $greetings = array("Howdy", "Hello", "Hi", "Greetings", "Hey");
+                                    $randomGreeting = $greetings[array_rand($greetings)];
+                                    echo "<a href='#' class='dropbtn'>$randomGreeting, $firstName <i class='fa fa-caret-down'></i></a>";
+                                    echo "<div class='dropdown-content'>";
+                                    echo "<a href='../user/change_password.php'>Change Password</a>";
+                                    echo "<a href='../user/logout.php'>Logout</a>";
+                                    echo "</div></li>";
                                 } else {
                                     echo '<li><a href="/project-ecommerce/login.php">Login</a></li>';
                                     echo '<li><a href="/project-ecommerce/signup.html">Signup</a></li>';
@@ -109,19 +154,19 @@ if (!$connection) {
             <div class="row">
                 <div class="col-4">
                     <a href="/products/detail_four.html">
-                    <img src="backend/uploads/demo.png" alt="hiii">
+                    <img src="../backend/uploads/demo1.png" alt="hiii">
                     <h4>Acer School Bagpack</h4>
                     <p style="font-size: medium; text-align: left;">Rs 700</p>
                 </a>
                 </div>
                 <div class="col-4">
-                    <img src="backend/uploads/demo.png" alt="hiii">
+                    <img src="../backend/uploads/demo.png" alt="hiii">
                     <h4>Laptop bag</h4>
                     <p style="font-size: medium; text-align: left;">Rs 1300</p>
                 </div>
                 <div class="col-4">
                     <a href="/products/detail_two.html">
-                        <img src="backend/uploads/demo.png" alt="hiii">
+                        <img src="../backend/uploads/demo12.png" alt="hiii">
                     <h4>Laptop bag</h4>
                     <p style="font-size: medium; text-align: left;">Rs 1500</p>
                 </a>
@@ -142,14 +187,14 @@ if (!$connection) {
                 </div>
                 <div class="feature-item">
                     <br>
-                    <img src="images/versatile.png" alt="versatile">
+                    <img src="../images/versatile.png" alt="versatile">
                     <br>
                     <h3>Versatile</h3>
                     <p style="font-size: small;">Embrace versatility with our products designed for your dynamic lifestyle. Whether you're at work, leisure, or on the go, our flexible offerings seamlessly adapt to your needs. Experience the freedom to customize, adjust, and utilize our versatile products in countless ways, empowering you to navigate life with ease and style.</p>
                 </div>
                 <div class="feature-item">
                     <br>
-                    <img src="images/longlasting.png" alt="long-lasting"><br>
+                    <img src="../images/longlasting.png" alt="long-lasting"><br>
                     <h3>Long Lasting</h3>
                     <p style="font-size: small;">Experience enduring quality with our long-lasting products built to withstand the test of time. Crafted from premium materials and engineered with precision, our items promise durability that goes beyond expectations. Invest in reliability and sustainability, ensuring your satisfaction for years to come.</p>
                 </div>
@@ -163,7 +208,7 @@ if (!$connection) {
             <h2 class="title">Exclusive Offers!!!</h2>
             <div class="row">
                 <div class="col-2">
-                    <img src="backend/uploads/demo.png" alt="hiii">
+                    <img src="../backend/uploads/demo12.png" alt="hiii">
 
                 </div>
                 <div class="col-2">
@@ -186,8 +231,8 @@ if (!$connection) {
                     <h3>Download our App</h3>
                     <p>Download  App for Android and ios mobile phone.</p>
                     <div class="app-logo">
-                        <img src="backend/uploads/play-store.png" alt="">
-                        <img src="backend/uploads/app-store.png" alt="">
+                        <img src="../backend/uploads/play-store.png" alt="">
+                        <img src="../backend/uploads/app-store.png" alt="">
                     </div>
                 </div>
                 <div class="footer-col-2">
