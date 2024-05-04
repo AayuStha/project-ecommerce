@@ -275,6 +275,13 @@ if (!$connection) {
         </div>
     </div>
 
+    <?php
+        $message = $_GET['message'] ?? '';
+        if ($message) {
+            echo "<script type='text/javascript'>alert('$message');</script>";
+        }
+    ?>
+
     <script src="../js/button.js"></script>
     <script>
         document.querySelector('.user-name').addEventListener('click', function() {

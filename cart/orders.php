@@ -81,13 +81,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <p>Landmark: $landmark</p>
         <p>Payment Method: $payment</p>
         <p>If you have any questions, feel free to contact us.</p>
+<<<<<<< HEAD
         <p>Best wishes,</p>
         <p>Bag Sales Nepal</p>
+=======
+        <p>Best,</p>
+        <p>BagSalesNepal's Team</p>
+>>>>>>> 08fd3c8 (added alert)
     ";
 
     if(!$mail->send()) {
         echo 'Mailer Error: ' . $mail->ErrorInfo;
     } else {
-        echo "Hi";
+        header("Location: ../user/home.php?message=Order placed successfully");
     }
 }
