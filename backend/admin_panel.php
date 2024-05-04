@@ -1,9 +1,7 @@
 <?php
-    session_start(); // Start the session if it's not already started
+    session_start(); 
 
-    // Check if the admin is not logged in
     if (!isset($_SESSION['username'])) {
-        // Redirect to the login page
         header('Location: ./admin_login.php');
         exit();
     }

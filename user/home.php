@@ -160,19 +160,19 @@ if (!$connection) {
                     <a href="/products/detail_four.html">
                     <img src="../backend/uploads/demo1.png" alt="hiii">
                     <h4>Acer School Bagpack</h4>
-                    <p style="font-size: medium; text-align: left;">Rs 700</p>
+                    <p style="font-size: medium; text-align: left;">Rs 4500</p>
                 </a>
                 </div>
                 <div class="col-4">
                     <img src="../backend/uploads/demo.png" alt="hiii">
                     <h4>Laptop bag</h4>
-                    <p style="font-size: medium; text-align: left;">Rs 1300</p>
+                    <p style="font-size: medium; text-align: left;">Rs 2000</p>
                 </div>
                 <div class="col-4">
                     <a href="/products/detail_two.html">
                         <img src="../backend/uploads/demo12.png" alt="hiii">
                     <h4>Laptop bag</h4>
-                    <p style="font-size: medium; text-align: left;">Rs 1500</p>
+                    <p style="font-size: medium; text-align: left;">Rs 3500</p>
                 </a>
                 </div>
             </div>
