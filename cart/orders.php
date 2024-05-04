@@ -88,6 +88,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if(!$mail->send()) {
         echo 'Mailer Error: ' . $mail->ErrorInfo;
     } else {
+        // Clear the cart
+        $_SESSION['cart'] = array();
+
+        // Redirect to the home page and show a message
         header("Location: ../user/home.php?message=Order placed successfully");
     }
 }

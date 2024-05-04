@@ -51,7 +51,7 @@ if (!empty($_SESSION['cart'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href=".././css/style.css" class="css">
+    <link rel="stylesheet" href="../css/style.css" class="css">
 
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -80,16 +80,21 @@ if (!empty($_SESSION['cart'])) {
             background-color: #4CAF50;
             color: white;
         }
+        .app-logo img{
+            width: 150px !important;
+            height: 50px;
+        }
         img {
             width: 90px;
             height: 90px;
         }
         #para{
-            margin: 100vw;
+            margin: 133px;
             font-size: 30px;
             font-weight: 800;
             text-align: center;
         }
+        
         #checkout{
             display: block;
             width: 10%;
