@@ -14,7 +14,7 @@
         $password = trim($_POST['password']);
 
         // Check if the entered username and password match the hardcoded values
-        if ($username === $correct_username || $password === $correct_password) {
+        if ($username === $correct_username && $password === $correct_password) {
             // Store user data in the session
             $_SESSION['username'] = $username;
 

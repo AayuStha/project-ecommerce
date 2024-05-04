@@ -72,30 +72,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $mail->isHTML(true);
     $mail->Subject = 'Order Confirmation';
     $mail->Body = "
-        <h1>Dear Customer,</h1>
-        <h2><b><p>Thank you for your order. Your order number is #{$order_id}. Your order details are as follows:</p></h2>
-        {$order_details}
-        <b><p>Contact:</b> $contact</p>
-        <b><p>City/District:</b> $city</p>
-        <b><p>Address: </b>$address</p>
-        <b><p>Landmark:</b> $landmark</p>
-        <b><p>Payment Method: </b>$payment</p>
-        <br>
-        <p>If you have any questions, feel free to contact us.</p>
-        <p>Best,</p>
-        <p>Bag Sales Nepal's Team</p>
-    ";
-
-    if(!$mail->send()) {
-        echo 'Mailer Error: ' . $mail->ErrorInfo;
-    } else {
-        echo "Hi";
-    }
-
-    // Content
-    $mail->isHTML(true);
-    $mail->Subject = 'Order Confirmation';
-    $mail->Body = "
         <h2>Dear Customer,</h2>
         <p>Thank you for your order. Your order number is {$order_id}. Your order details are as follows:</p>
         {$order_details}

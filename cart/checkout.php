@@ -130,13 +130,13 @@
     <form action="./orders.php" method="post" id="form">
         <h1>Please enter your shipping details</h1>
         <label for="email">Email:</label>
-        <input type="email" name="email" value="<?php echo $email; ?>"> <br>
+        <input type="email" name="email" value="<?php echo $email; ?>" required> <br>
         <label for="contact">Contact:</label>
-        <input type="number" id="contact" name="contact" value="<?php echo $contact; ?>"> <br> 
+        <input type="number" id="contact" name="contact" value="<?php echo $contact; ?>" required> <br> 
         <label for="city">City/District:</label>
-        <input type="text" id="city" name="city"> <br> 
+        <input type="text" id="city" name="city" required> <br> 
         <label for="address">Address:</label>
-        <input type="text" id="address" name="address"> <br> 
+        <input type="text" id="address" name="address" required> <br> 
         <label for="landmark">Landmark:</label>
         <input type="text" id="landmark" name="landmark"> <br> 
         <br> <br>
