@@ -81,8 +81,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <p>Landmark: $landmark</p>
         <p>Payment Method: $payment</p>
         <p>If you have any questions, feel free to contact us.</p>
-        <p>Best,</p>
-        <p>Your Team</p>
+        <p>Best wishes,</p>
+        <p>Bag Sales Nepal</p>
     ";
 
     if(!$mail->send()) {

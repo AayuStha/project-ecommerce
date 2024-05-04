@@ -13,6 +13,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="./favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./favicon/favicon-16x16.png">
+    <link rel="manifest" href="./favicon/site.webmanifest">
     <title>Checkout - BagSales Nepal</title>
     <style>
         h1{
@@ -49,8 +53,8 @@
         }
 
         input[type="radio"] {
-            float: left;
-            margin-right: 10px;
+            width: 10%;
+            margin-right: 90px;
         }
 
         input[type="submit"] {
@@ -141,10 +145,14 @@
         <input type="text" id="landmark" name="landmark"> <br> 
         <br> <br>
         <h1>Please select your payment method</h1>
-        <input type="radio" id="cod" name="payment" value="cod">
-        <label for="cod">Cash on Delivery</label><br>
-        <input type="radio" id="esewa" name="payment" value="esewa">
-        <label for="esewa">Esewa</label><br>
+        <div class="radio-group">
+            <input type="radio" id="cod" name="payment" value="cod">
+            <label for="cod">Cash on Delivery</label>
+        </div>
+        <div class="radio-group">
+            <input type="radio" id="esewa" name="payment" value="esewa">
+            <label for="esewa">Esewa</label>
+        </div>
         <input type="submit" value="Place order">
     </form>
 
