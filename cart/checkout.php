@@ -54,7 +54,6 @@
 
         input[type="radio"] {
             width: 10%;
-            margin-right: 90px;
         }
 
         input[type="submit"] {
@@ -71,6 +70,20 @@
         input[type="submit"]:hover {
             background-color: #45a049;
         }
+
+        .radio-group{
+            display: flex;
+            flex-direction: row;
+        }
+
+        .radio-group label{
+            
+            margin-bottom: -10px;
+        }
+        .radio-group input{
+            margin-top:20px;
+
+}
     </style>
 </head>
 <body>
@@ -148,8 +161,6 @@
         <div class="radio-group">
             <input type="radio" id="cod" name="payment" value="cod">
             <label for="cod">Cash on Delivery</label>
-        </div>
-        <div class="radio-group">
             <input type="radio" id="esewa" name="payment" value="esewa">
             <label for="esewa">Esewa</label>
         </div>
