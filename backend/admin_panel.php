@@ -97,7 +97,7 @@ table td, table th {
         <h1>Welcome to the Admin Panel</h1>
         <p>Here you can manage your e-commerce site.</p>
         <button class="btn" id="add" onclick="location.href='add_product.php'">Add Product</button>
-        <button class="btn" id="orders" onclick="location.href='order.php'">Order</button>
+        <button class="btn" id="orders" onclick="location.href='order.php'">View Orders</button>
         <div class="table-responsive">
         <table class="product-table">
             <tr>
