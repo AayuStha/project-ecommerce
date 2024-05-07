@@ -143,6 +143,7 @@
         $user = $result->fetch_assoc();
         $email = $user['email'];
         $contact = $user['number'];
+        $totalPrice = $_SESSION['total_price'];
     ?>
     <form action="./orders.php" method="post" id="form">
         <h1>Please enter your shipping details</h1>
@@ -156,7 +157,8 @@
         <input type="text" id="address" name="address" required> <br> 
         <label for="landmark">Landmark:</label>
         <input type="text" id="landmark" name="landmark"> <br> 
-        <br> <br>
+        <label for="total_price">Total Price:</label>
+        <input type="text" name="total_price" value="<?php echo $totalPrice; ?>" readonly> <br> <br>
         <h1>Please select your payment method</h1>
         <div class="radio-group">
             <input type="radio" id="cod" name="payment" value="cod">

@@ -21,6 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $city = $_POST['city'];
     $address = $_POST['address'];
     $landmark = $_POST['landmark'];
+    $price = $_POST['total_price'];
     $payment = $_POST['payment'];
 
     $conn = new mysqli($servername, $username, $password, $database);
@@ -30,9 +31,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Insert the order into the database
-    $query = "INSERT INTO orders (user_id, email, contact, city, address, landmark, payment) VALUES (?, ?, ?, ?, ?, ?, ?)";
+    $query = "INSERT INTO orders (user_id, email, contact, city, address, landmark, price, payment) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
     $stmt = $conn->prepare($query);
-    $stmt->bind_param("issssss", $_SESSION['user_id'], $email, $contact, $city, $address, $landmark, $payment);
+    $stmt->bind_param("isssssss", $_SESSION['user_id'], $email, $contact, $city, $address, $landmark, $price, $payment);
     $stmt->execute();
 
     // Get the ID of the last inserted order
@@ -81,7 +82,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <p>Landmark: $landmark</p>
         <p>Payment Method: $payment</p>
         <p>If you have any questions, feel free to contact us.</p>
-        <p>Best,</p>
+        <p>Best Regards,</p>
         <p>BagSalesNepal's Team</p>
     ";
 
