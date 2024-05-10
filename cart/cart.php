@@ -240,6 +240,10 @@ if (!empty($_SESSION['cart'])) {
 
         <div id="total-price">
             <h2>Total price till now: <?php echo $totalPrice; ?></h2>
+            <?php
+                // Store total price in session
+                $_SESSION['total_price'] = $totalPrice;
+            ?>
         </div>
 
         <form method="post" action="./checkout.php">
