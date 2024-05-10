@@ -1,11 +1,63 @@
+<?php
+session_start();
+
+// Include database configuration
+include 'config.php';
+
+// Establish database connection
+$db = new mysqli($servername, $username, $password, $database);
+
+// Check database connection
+if ($db->connect_error) {
+    die("Connection failed: " . $db->connect_error);
+}
+
+// Check if the product ID is set in the URL
+if (isset($_GET['id'])) {
+    // Get the product ID from the URL
+    $product_id = $_GET['id'];
+
+    // Fetch the product data from the database
+    $stmt = $db->prepare("SELECT * FROM products WHERE id = ?");
+    $stmt->bind_param("i", $product_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    // Check if the product exists
+    if ($result->num_rows > 0) {
+        // Fetch product details
+        $product = $result->fetch_assoc();
+    } else {
+        // Product not found, handle error (redirect, display message, etc.)
+        echo "Product not found.";
+        exit();
+    }
+} else {
+    // Product ID is not set in the URL, handle error (redirect, display message, etc.)
+    echo "Product ID is missing.";
+    exit();
+}
+
+// Fetch the user's email and password from the database
+if (isset($_SESSION['user_id'])) {
+    $user_id = $_SESSION['user_id'];
+    $stmt = $db->prepare("SELECT email, usr_password FROM users WHERE id = ?");
+    $stmt->bind_param("i", $user_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $user = $result->fetch_assoc();
+    $email = $user['email'];
+    $user_password = $user['usr_password'];
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="stylesheet" href="css/style.css" class="css">
-
+    <title>Product Details - BagSales Nepal</title>
+    <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -14,65 +66,58 @@
     <link rel="icon" type="image/png" sizes="32x32" href="./favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="./favicon/favicon-16x16.png">
     <link rel="manifest" href="./favicon/site.webmanifest">
-    <title>Product Details - BagSales Nepal</title>
-<style>
-    img {
-        width: 250px;
-        height: fixed;
-        flex: 1;
-    }
-    h1 {
-        font-size: 2em;
-        color: #333;
-    }
-    p {
-        font-size: 1.2em;
-        color: #666;
-    }
-    .price {
-        font-size: 1.5em;
-        color: green;
-    }
-    form {
-    display: flex;
-    align-items: center;
-    }
-
-    input[type="text"] {
-    width: 50px;
-    margin-top: 30px;
-    text-decoration: none;
-    text-align: center;
-    background: transparent;
-    }
-    #btn{
-        border: none;
-        width: 40px;
-        height: 45px;
-        background-color: radial-gradient(#f4eef2,#f4eef2);
-    }
-    .addtocart-btn {
-    background-color: green;
-    border: none;
-    color: #333;
-    padding: 10px 30px;
-    width: 200px;
-    height: 50px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin-top: 29px;
-    margin-left: 15px;
-    cursor: pointer;
+    <style>
+img {
+    width: 250px;
+    height: fixed;
+    flex: 1;
 }
-    @media screen and (max-width: 510px){   
-        h1{
-            margin-left: 6px;
-        }
-    }
-</style>
+h1 {
+    font-size: 2em;
+    color: #333;
+}
+p {
+    font-size: 1.2em;
+    color: #666;
+}
+.price {
+    font-size: 1.5em;
+    color: green;
+}
+form {
+display: flex;
+align-items: center;
+}
 
+input[type="text"] {
+width: 50px;
+margin-top: 30px;
+text-decoration: none;
+text-align: center;
+background: transparent;
+}
+#btn{
+    border: none;
+    width: 40px;
+    height: 45px;
+    background-color: radial-gradient(#f4eef2,#f4eef2);
+}
+.addtocart-btn {
+background-color: green;
+border: none;
+color: #333;
+padding: 10px 30px;
+width: 200px;
+height: 50px;
+text-align: center;
+text-decoration: none;
+display: inline-block;
+font-size: 16px;
+margin-top: 29px;
+margin-left: 15px;
+cursor: pointer;
+}
+    </style>
 </head>
 <body>
     <div class="header">
@@ -92,55 +137,33 @@
                         <li><a href="/project-ecommerce/offers.html">Offers</a></li>
                         <li><a href="/project-ecommerce/login.php">Login</a></li>
                         <li><a href="/project-ecommerce/signup.html">Signup</a></li>
-                        <a href="./cart/cart.php"><i class="fa-solid fa-cart-shopping"></i></a>
+                        <a href="/cart/cart.php"><i class="fa-solid fa-cart-shopping"></i></a>
                     </ul>
                 </nav>
-                <!-- <img src="images/cart.png" width="30px" height="30px"alt="cart"> -->
             </div>
             <hr>
             <br>
-            <?php
-                // Connect to the database
-                include 'config.php';
-
-                $db = new mysqli($servername, $username, $password, $database);
-
-                // Check connection
-                if ($db->connect_error) {
-                    die("Connection failed: " . $db->connect_error);
-                }
-
-                // Get the ID of the product
-                $id = $_GET['id'];
-
-                // Fetch the product data
-                $stmt = $db->prepare("SELECT * FROM products WHERE id = ?");
-                $stmt->bind_param("i", $id);
-                $stmt->execute();
-                $result = $stmt->get_result();
-                $product = $result->fetch_assoc();
-                ?>
-
-                <!-- Display the product data -->
-                <img src="backend/uploads/<?php echo $product['image']; ?>" alt="Product Image">
-                <h1><?php echo $product['name']; ?></h1>
-                <p><?php echo $product['description']; ?></p>
-                <br>
-                <p class="price">Price: 🇳🇵 <?php echo $product['price']; ?></p>
-                <br>
-                <form action="./cart/cart.php" method="POST">
-                    <input type="hidden" name="product_id" value="<?php echo $product['id']; ?>">
-                    <button type="button" onclick="decrementValue()" id="btn">-</button>
-                    <input type="text" name="quantity" value="1" id="number">
-                    <button type="button" onclick="incrementValue()"id="btn">+</button>
-                    <button type="submit" class="addtocart-btn">Add to Cart</button>
-                </form>
-                <br>
-                <br>
+            <!-- Display the product data -->
+            <?php if(isset($product)): ?>
+            <img src="backend/uploads/<?php echo $product['image']; ?>" alt="Product Image">
+            <h1><?php echo $product['name']; ?></h1>
+            <p><?php echo $product['description']; ?></p>
+            <br>
+            <p class="price">Price: 🇳🇵 <?php echo $product['price']; ?></p>
+            <br>
+            <!-- Your add to cart form and other content -->
+            <form action="<?php echo isset($_SESSION['user_id']) ? './cart/cart.php' : './login.php'; ?>" method="POST">
+                <input type="hidden" name="product_id" value="<?php echo $product['id']; ?>">
+                <button type="button" onclick="decrementValue()" id="btn">-</button>
+                <input type="text" name="quantity" value="1" id="number">
+                <button type="button" onclick="incrementValue()"id="btn">+</button>
+                <button type="submit" class="addtocart-btn">Add to Cart</button>
+            </form>
+            <br>
+            <br>
+            <?php endif; ?>
         </div>
     </div>
-<!-- Footer -->
-
     <div class="footer">
         <div class="container">
             <div class="row">
@@ -183,27 +206,5 @@
                     </tr>
                 </table>    
             </div>
-            <hr>
-            <p class="copyright">© 2023 BagSales Nepal. All rights reserved. </p>
-        </div>
-    </div>
-    <script>
-        function incrementValue() {
-    var value = parseInt(document.getElementById('number').value, 10);
-    value = isNaN(value) ? 0 : value;
-    value++;
-    document.getElementById('number').value = value;
-}
-
-function decrementValue() {
-    var value = parseInt(document.getElementById('number').value, 10);
-    value = isNaN(value) ? 0 : value;
-    value < 1 ? value = 1 : '';
-    value--;
-    document.getElementById('number').value = value;
-}
-
-    
-    </script>
 </body>
 </html>

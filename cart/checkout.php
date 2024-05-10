@@ -119,31 +119,29 @@
     <?php
     session_start();
 
-    // Check if the user is logged in
-    if (isset($_SESSION['user_id']) && $_SESSION['user_id'] == true) {
-        if(isset($_POST['product'])){
-            $product = $_POST['product'];
-        }
-        // User is logged in, proceed to display the shipping details form
+    if(isset($_POST['product'])){
+        $product = $_POST['product'];
+    }
 
-        include '../config.php';
-        $conn = new mysqli($servername, $username, $password, $database);
+    include '../config.php';
+    $conn = new mysqli($servername, $username, $password, $database);
 
-        if ($conn->connect_error) {
-            die("Connection failed: " . $db->connect_error);
-        }
+    if ($conn->connect_error) {
+        die("Connection failed: " . $db->connect_error);
+    }
 
-         // Fetch the user's email from the database
-        $user_id = $_SESSION['user_id'];
-        $query = "SELECT email, number FROM users WHERE id = ?";
-        $stmt = $conn->prepare($query);
-        $stmt->bind_param("i", $user_id);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        $user = $result->fetch_assoc();
-        $email = $user['email'];
-        $contact = $user['number'];
+    // Fetch the user's email from the database
+    $user_id = $_SESSION['user_id'];
+    $query = "SELECT email, number FROM users WHERE id = ?";
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("i", $user_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $user = $result->fetch_assoc();
+    $email = $user['email'];
+    $contact = $user['number'];
     ?>
+
     <form action="./orders.php" method="post" id="form">
         <h1>Please enter your shipping details</h1>
         <label for="email">Email:</label>
@@ -159,10 +157,8 @@
         <br> <br>
         <h1>Please select your payment method</h1>
         <div class="radio-group">
-            <input type="radio" id="cod" name="payment" value="cod">
-            <label for="cod">Cash on Delivery</label>
-            <input type="radio" id="esewa" name="payment" value="esewa">
-            <label for="esewa">Esewa</label>
+            <input type="radio" id="Cash on Delivery" name="payment" value="Cash on Delivery">
+            <label for="Cash on Delivery">Cash on Delivery</label>
         </div>
         <input type="submit" value="Place order">
     </form>
@@ -218,12 +214,3 @@
     <script src="../js/button.js"></script>    
 </body>
 </html>
-
-
-<?php
-} else {
-    // User is not logged in, redirect to login page
-    header("Location: ../login.php");
-    exit;
-}
-?>

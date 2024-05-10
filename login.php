@@ -1,9 +1,8 @@
 <?php
 
-    session_start(); // Start the session at the top of your script
+    session_start(); 
 
     if (isset($_SESSION['user_id'])) {
-        // The user is logged in. Redirect them to the home page.
         header('Location: /project-ecommerce/user/home.php');
         exit;
     }
@@ -11,44 +10,46 @@
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         
-        $email = htmlspecialchars($_POST["email"]); // Use htmlspecialchars to prevent XSS attacks
-        $usr_password = htmlspecialchars($_POST["usr_password"]); // Use htmlspecialchars to prevent XSS attacks
+        if (isset($_POST["email"]) && isset($_POST["usr_password"])) {
+            $email = htmlspecialchars($_POST["email"]); 
+            $usr_password = htmlspecialchars($_POST["usr_password"]); 
 
-        $mysqli = new mysqli($servername, $username, $password, $database);
+            $mysqli = new mysqli($servername, $username, $password, $database);
 
-        if ($mysqli->connect_error) {
-            die("Connection failed: " . $mysqli->connect_error);
-        }
-
-        $stmt = $mysqli->prepare("SELECT id, usr_password FROM users WHERE email = ?");
-        $stmt->bind_param("s", $email);
-        $stmt->execute();
-        $stmt->store_result();
-        $num_rows = $stmt->num_rows;
-
-        if ($num_rows > 0) {
-            $stmt->bind_result($id, $hashed_password);
-            $stmt->fetch();
-        
-            if (password_verify($usr_password, $hashed_password)) {
-                // The password is correct. Start a session and store the user's ID in the session.
-                session_start();
-                $_SESSION['user_id'] = $id;
-                // Redirect the user to the home page.
-                header('Location: /project-ecommerce/user/home.php');
-                exit;
-            } else {
-                // The password is incorrect.
-                $error ='Invalid password.';
+            if ($mysqli->connect_error) {
+                die("Connection failed: " . $mysqli->connect_error);
             }
+
+            $stmt = $mysqli->prepare("SELECT id, usr_password FROM users WHERE email = ?");
+            $stmt->bind_param("s", $email);
+            $stmt->execute();
+            $stmt->store_result();
+            $num_rows = $stmt->num_rows;
+
+            if ($num_rows > 0) {
+                $stmt->bind_result($id, $hashed_password);
+                $stmt->fetch();
+            
+                if (password_verify($usr_password, $hashed_password)) {
+                    session_start();
+                    $_SESSION['user_id'] = $id;
+                    header('Location: /project-ecommerce/user/home.php');
+                    exit;
+                } else {
+                    $error ='Invalid password.';
+                }
+            } else {
+                // The email is invalid.
+                $error = 'Invalid email.';
+            }
+            $stmt->close();
+            $mysqli->close();
         } else {
-            // The email is invalid.
-            $error = 'Invalid email.';
+            // Handle case where form fields are not set
+            $error = "Form fields are not set.";
         }
-        $stmt->close();
-        $mysqli->close();
     } 
-    ?>
+?>
 
 <!DOCTYPE html>
 <html lang="en">
