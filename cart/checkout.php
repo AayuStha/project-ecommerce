@@ -157,6 +157,8 @@
         <input type="text" id="address" name="address" required> <br> 
         <label for="landmark">Landmark:</label>
         <input type="text" id="landmark" name="landmark"> <br> 
+        <label for="quantity">Quantity:</label>
+        <input type="text" name="quantity" value="<?php echo array_sum(array_column($_SESSION['cart'], 'quantity')); ?>" readonly> <br>
         <label for="total_price">Total Price:</label>
         <input type="text" name="total_price" value="<?php echo $totalPrice; ?>" readonly> <br> <br>
         <h1>Please select your payment method</h1>

@@ -23,6 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $landmark = $_POST['landmark'];
     $price = $_POST['total_price'];
     $payment = $_POST['payment'];
+    $totalQuantity = array_sum(array_column($_SESSION['cart'], 'quantity'));
 
     $conn = new mysqli($servername, $username, $password, $database);
 
@@ -30,10 +31,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         die("Connection failed: " . $conn->connect_error);
     }
 
+
     // Insert the order into the database
-    $query = "INSERT INTO orders (user_id, email, contact, city, address, landmark, price, payment) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+    $query = "INSERT INTO orders (user_id, product_id, email, contact, city, address, landmark, quantity, price, payment) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     $stmt = $conn->prepare($query);
-    $stmt->bind_param("isssssss", $_SESSION['user_id'], $email, $contact, $city, $address, $landmark, $price, $payment);
+    $stmt->bind_param("iisssssiss", $_SESSION['user_id'], $product_id, $email, $contact, $city, $address, $landmark, $totalQuantity, $price, $payment);
     $stmt->execute();
 
     // Get the ID of the last inserted order
