@@ -247,9 +247,16 @@ if (!empty($_SESSION['cart'])) {
         </div>
 
         <form method="post" action="./checkout.php">
-            <input type="hidden" name="product" value="your_product">
+            <input type="hidden" name="product_id" value="<?php echo $product_id; ?>">
+            <input type="hidden" name="city" value="<?php echo $city; ?>">
+            <input type="hidden" name="address" value="<?php echo $address; ?>">
+            <input type="hidden" name="landmark" value="<?php echo $landmark; ?>">
+            <input type="hidden" name="quantity" value="<?php echo $product_quantity; ?>">
+            <input type="hidden" name="total_price" value="<?php echo $product_price; ?>">
+            <input type="hidden" name="payment" value="Cash on delivery"> <!-- Assuming default payment -->
             <button id="checkout" type="submit" name="checkout">Checkout</button>
         </form>
+
     <?php else: ?>
         <p id="para">Your cart is empty.</p>
     <?php endif; ?>
