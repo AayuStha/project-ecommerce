@@ -110,6 +110,7 @@ if (!$connection) {
                                     $randomGreeting = $greetings[array_rand($greetings)];
                                     echo "<a href='#' class='dropbtn'>$randomGreeting, $firstName <i class='fa fa-caret-down'></i></a>";
                                     echo "<div class='dropdown-content'>";
+                                    echo "<a href='./view_orders.php'>View Orders</a>";
                                     echo "<a href='../user/change_password.php'>Change Password</a>";
                                     echo "<a href='../user/logout.php'>Logout</a>";
                                     echo "</div></li>";

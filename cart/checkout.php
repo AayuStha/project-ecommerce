@@ -143,7 +143,7 @@
             <form action="./orders.php" method="post" id="form">
                 <h1>Please enter your shipping details</h1>
                 <label for="email">Email:</label>
-                <input type="email" name="email" value="<?php echo $email; ?>" required> <br>
+                <input type="email" name="email" value="<?php echo $email; ?>" required readonly> <br>
                 <label for="contact">Contact:</label>
                 <input type="number" id="contact" name="contact" value="<?php echo $contact; ?>" required> <br> 
                 <label for="city">City/District:</label>
@@ -159,7 +159,7 @@
                     <label for="quantity_<?php echo $product_id; ?>">Quantity for <?php echo $product_details['name']; ?>:</label>
                     <input type="number" name="quantity[]" id="quantity_<?php echo $product_id; ?>" value="<?php echo $product_details['quantity']; ?>" readonly> <br>
                     <label for="total_price_<?php echo $product_id; ?>">Total Price:</label>
-<input type="number" name="total_price[]" id="total_price_<?php echo $product_id; ?>" value="<?php echo $product_details['quantity'] * $product_details['price']; ?>" readonly> <br>
+                    <input type="number" name="total_price[]" id="total_price_<?php echo $product_id; ?>" value="<?php echo $product_details['quantity'] * $product_details['price']; ?>" readonly> <br>
                 <?php } ?>
 
                 <!-- Other form fields and payment method selection -->
