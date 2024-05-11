@@ -3,7 +3,7 @@
     session_start(); 
 
     if (isset($_SESSION['user_id'])) {
-        header('Location: /project-ecommerce/user/home.php');
+        header('Location: /project-ecommerce/index.php');
         exit;
     }
     include './config.php';
@@ -33,7 +33,7 @@
                 if (password_verify($usr_password, $hashed_password)) {
                     session_start();
                     $_SESSION['user_id'] = $id;
-                    header('Location: /project-ecommerce/user/home.php');
+                    header('Location: /project-ecommerce/index.php');
                     exit;
                 } else {
                     $error ='Invalid password.';
@@ -159,18 +159,18 @@
         <div class="navcont">
             <div class="navbar">
                 <div class="logo">
-                    <a href="/project-ecommerce/index.html">
+                    <a href="/project-ecommerce/index.php">
                         BagSalesNepal
                     </a>
                 </div>
                 <nav>
                     <ul id="items">
-                        <li><a href="/project-ecommerce/index.html" >Home</a></li>
+                        <li><a href="/project-ecommerce/index.php" >Home</a></li>
                         <li><a href="/project-ecommerce/products.php">Products</a></li>
-                        <li><a href="/project-ecommerce/about.html">About</a></li>
-                        <li><a href="/project-ecommerce/contact.html">Contact</a></li>
-                        <li><a href="/project-ecommerce/offers.html">Offers</a></li>
-                        <li><a href="/project-ecommerce/backend/contact.php" class="active">Login</a></li>
+                        <li><a href="/project-ecommerce/about.php">About</a></li>
+                        <li><a href="/project-ecommerce/contact.php">Contact</a></li>
+                        <li><a href="/project-ecommerce/offers.php">Offers</a></li>
+                        <li><a href="/project-ecommerce/login.php" class="active">Login</a></li>
                         <li><a href="/project-ecommerce/signup.html">Signup</a></li>
                         <a href="cart.php"><i class="fa-solid fa-cart-shopping"></i></a>
                     </ul>

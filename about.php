@@ -1,3 +1,16 @@
+<?php
+session_start();
+
+include 'config.php';
+
+$connection = mysqli_connect($servername, $username, $password, $database);
+
+if (!$connection) {
+    die("ERROR: Could not connect. " . mysqli_connect_error());
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,26 +29,103 @@
     <link rel="icon" type="image/png" sizes="16x16" href="./favicon/favicon-16x16.png">
     <link rel="manifest" href="./favicon/site.webmanifest">
     <title>About - BagSales Nepal</title>
+    <style>
+    .username {
+        color: #cd34ef;
+        font-size: 18px;
+        font-family: 'Comic Sans Ms';
+    }
+    .user-name:hover {
+    cursor: pointer;
+    }
+
+    .dropdown {
+        position: relative;
+        display: inline-block;
+}
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        margin-top: 10px;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+        background-color: radial-gradient(#f4eef2,#f4eef2);;
+
+    }
+
+    .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    .dropbtn {
+        color: crimson;
+        padding: 16px;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+    }
+
+    .fa-caret-down {
+        margin-left: 5px;
+    }
+    </style>
 </head>
 <body>
     <div class="header">
         <div class="container">
             <div class="navbar">
                 <div class="logo">
-                    <a href="/project-ecommerce/index.html">
+                    <a href="/project-ecommerce/index.php">
                         BagSalesNepal
                     </a>
                 </div>
                 <nav>
                     <ul id="items">
-                        <li><a href="/project-ecommerce/index.html" >Home</a></li>
-                        <li><a href="/project-ecommerce/products.php">Products</a></li>
-                        <li><a href="/project-ecommerce/about.html" class="active">About</a></li>
-                        <li><a href="/project-ecommerce/contact.html">Contact</a></li>
-                        <li><a href="/project-ecommerce/offers.html">Offers</a></li>
-                        <li><a href="/project-ecommerce/login.php">Login</a></li>
-                        <li><a href="/project-ecommerce/signup.html">Signup</a></li>
-                        <a href="cart.php"><i class="fa-solid fa-cart-shopping"></i></a>
+                        <li><a href="/project-ecommerce/index.php">Home</a></li>
+                        <li><a href="/project-ecommerce/products.php" >Products</a></li>
+                        <li><a href="/project-ecommerce/about.php" class="active">About</a></li>
+                        <li><a href="/project-ecommerce/contact.php">Contact</a></li>
+                        <li><a href="/project-ecommerce/offers.php">Offers</a></li>
+                        <?php
+                            if (isset($_SESSION['user_id']) && !empty($_SESSION['user_id'])) {
+                                $query = "SELECT firstname FROM users WHERE id = {$_SESSION['user_id']}";
+                                $result = mysqli_query($connection, $query);
+                                
+                                if ($result) {
+                                    $row = mysqli_fetch_assoc($result);
+                                    if ($row) {
+                                        $firstName = $row['firstname'];
+                                        echo "<li class='dropdown'>";
+                                        $greetings = array("Howdy", "Hello", "Hi", "Greetings", "Hey");
+                                        $randomGreeting = $greetings[array_rand($greetings)];
+                                        echo "<a href='#' class='dropbtn'>$randomGreeting, $firstName <i class='fa fa-caret-down'></i></a>";
+                                        echo "<div class='dropdown-content'>";
+                                        echo "<a href='/project-ecommerce/user/view_orders.php'>View Orders</a>";
+                                        echo "<a href='/user/change_password.php'>Change Password</a>";
+                                        echo "<a href='/user/logout.php'>Logout</a>";
+                                        echo "</div></li>";
+                                    } else {
+                                        echo '<li><a href="/project-ecommerce/login.php">Login</a></li>';
+                                        echo '<li><a href="/project-ecommerce/signup.html">Signup</a></li>';
+                                    }
+                                } else {
+                                    echo "ERROR: Could not execute $query. " . mysqli_error($connection);
+                                }
+                            } else {
+                                echo '<li><a href="/project-ecommerce/login.php">Login</a></li>';
+                                echo '<li><a href="/project-ecommerce/signup.html">Signup</a></li>';
+                            }
+                        ?>
+                        <a href="/project-ecommerce/cart/cart.php"><i class="fa-solid fa-cart-shopping"></i></a>
                     </ul>
                 </nav>
                 <button id="hamburger-menu" class="hamburger-menu">

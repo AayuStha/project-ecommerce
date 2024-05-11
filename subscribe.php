@@ -37,17 +37,17 @@
         <div class="container">
             <div class="navbar">
                 <div class="logo">
-                    <a href="/project-ecommerce/index.html">
+                    <a href="/project-ecommerce/index.php">
                         BagSalesNepal
                     </a>
                 </div>
                 <nav>
                     <ul id="items">
-                        <li><a href="/project-ecommerce/index.html" class="active">Home</a></li>
+                        <li><a href="/project-ecommerce/index.php" class="active">Home</a></li>
                         <li><a href="/project-ecommerce/products.php">Products</a></li>
-                        <li><a href="/project-ecommerce/about.html">About</a></li>
-                        <li><a href="/project-ecommerce/contact.html">Contact</a></li>
-                        <li><a href="/project-ecommerce/offers.html">Offers</a></li>
+                        <li><a href="/project-ecommerce/about.php">About</a></li>
+                        <li><a href="/project-ecommerce/contact.php">Contact</a></li>
+                        <li><a href="/project-ecommerce/offers.php">Offers</a></li>
                         <li><a href="/project-ecommerce/login.php">Login</a></li>
                         <li><a href="/project-ecommerce/signup.html">Signup</a></li>
                         <a href="cart.php"><i class="fa-solid fa-cart-shopping"></i></a>
@@ -98,7 +98,7 @@
                     }
                 }
             ?>
-            <a href="/project-ecommerce/index.html" class="btn"><i class="fa-solid fa-arrow-left"> Back</i></a>
+            <a href="/project-ecommerce/index.php" class="btn"><i class="fa-solid fa-arrow-left"> Back</i></a>
 
 <!-- Footer -->
 
