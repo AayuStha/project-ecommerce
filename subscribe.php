@@ -43,7 +43,7 @@
                 </div>
                 <nav>
                     <ul id="items">
-                        <li><a href="/project-ecommerce/index.php" class="active">Home</a></li>
+                        <li><a href="/project-ecommerce/index.php">Home</a></li>
                         <li><a href="/project-ecommerce/products.php">Products</a></li>
                         <li><a href="/project-ecommerce/about.php">About</a></li>
                         <li><a href="/project-ecommerce/contact.php">Contact</a></li>

@@ -44,9 +44,6 @@
             }
             $stmt->close();
             $mysqli->close();
-        } else {
-            // Handle case where form fields are not set
-            $error = "Form fields are not set.";
         }
     } 
 ?>
@@ -172,7 +169,7 @@
                         <li><a href="/project-ecommerce/offers.php">Offers</a></li>
                         <li><a href="/project-ecommerce/login.php" class="active">Login</a></li>
                         <li><a href="/project-ecommerce/signup.html">Signup</a></li>
-                        <a href="cart.php"><i class="fa-solid fa-cart-shopping"></i></a>
+                        <a href="cart/cart.php"><i class="fa-solid fa-cart-shopping"></i></a>
                     </ul>
                 </nav>
                 <button id="hamburger-menu" class="hamburger-menu">

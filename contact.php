@@ -79,6 +79,42 @@ if (!$connection) {
         margin-left: 5px;
     }
 
+    .wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        justify-content: space-between;
+    }
+
+    .contact-left {
+        flex-basis: 45%;
+        padding: 20px;
+    }
+
+    .contact-right {
+        flex-basis: 45%;
+        padding: 20px;
+    }
+
+    iframe {
+        width: 80%;
+        height: 450px;
+        border: 1px solid #222988;
+    }
+
+    @media (max-width: 768px) {
+        .wrapper {
+            flex-direction: column;
+        }
+        iframe{
+            height: 350px;
+        }
+
+        .contact-left,
+        .contact-right {
+            flex-basis: 100%;
+        }
+    }
     </style>
     <title>Contact - BagSales Nepal</title>
 </head>
@@ -112,8 +148,8 @@ if (!$connection) {
                                         echo "<a href='#' class='dropbtn'>$randomGreeting, $firstName <i class='fa fa-caret-down'></i></a>";
                                         echo "<div class='dropdown-content'>";
                                         echo "<a href='/project-ecommerce/user/view_orders.php'>View Orders</a>";
-                                        echo "<a href='/user/change_password.php'>Change Password</a>";
-                                        echo "<a href='/user/logout.php'>Logout</a>";
+                                        echo "<a href='/project-ecommerce/user/change_password.php'>Change Password</a>";
+                                        echo "<a href='/project-ecommerce/user/logout.php'>Logout</a>";
                                         echo "</div></li>";
                                     } else {
                                         echo '<li><a href="/project-ecommerce/login.php">Login</a></li>';
@@ -140,38 +176,39 @@ if (!$connection) {
         </div>
         <hr>
 
-    <div class="wrapper">
-        <h1 id="get">Get In Touch</h1>
-        <p>We would love to respond to your queries and help you succeed. Feel free to get in touch with us.</p>
-            <div class="contact-left">
-                <br>
-                <form action="./backend/contact.php" method="POST">
-                    <div class="contact-row">
-                        <div class="contact-group">
-                            <label>Name</label>
-                            <input type="text" placeholder="Stan Lee" name="name">
-                        </div>
-                        <div class="contact-group">
-                            <label>Phone</label>
-                            <input type="text" placeholder="+977-9841234567" name="phone">
-                        </div>
+        <div class="wrapper">
+        <div class="contact-left">
+            <h1 id="get">Get In Touch</h1>
+            <p>We would love to respond to your queries and help you succeed. Feel free to get in touch with us.</p>
+            <form action="./backend/contact.php" method="POST">
+                <div class="contact-row">
+                    <div class="contact-group">
+                        <label>Name</label>
+                        <input type="text" placeholder="Full name" name="name">
                     </div>
-                    <div class="contact-row">
-                        <div class="contact-group">
-                            <label>Email</label>
-                            <input type="email" placeholder="example@example.com" name="email">
-                        </div>
-                        <div class="contact-group">
-                            <label>Subject</label>
-                            <input type="text" placeholder="Topic to discuss" name="subject">
-                        </div>
+                    <div class="contact-group">
+                        <label>Phone</label>
+                        <input type="text" placeholder="+977-9XXXXXXXXX" name="phone">
                     </div>
-                    <label>Message</label>
-                    <textarea rows="5" name="message" placeholder="Your Query" ></textarea>
-
-                    <button type="submit">SEND</button>
-                </form>
-            </div>
+                </div>
+                <div class="contact-row">
+                    <div class="contact-group">
+                        <label>Email</label>
+                        <input type="email" placeholder="example@example.com" name="email">
+                    </div>
+                    <div class="contact-group">
+                        <label>Subject</label>
+                        <input type="text" placeholder="Topic to discuss" name="subject">
+                    </div>
+                </div>
+                <label>Message</label>
+                <textarea rows="5" name="message" placeholder="Your Query"></textarea>
+                <button type="submit">SEND</button>
+            </form>
+        </div>
+        <div class="contact-right">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3532.9401951766317!2d85.29995187618731!3d27.688243226332528!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb184a281e7491%3A0xf947496b7f4831a7!2sSagarmatha%20College%20of%20Science%20and%20Technology%20%5BSCST%5D!5e0!3m2!1sen!2snp!4v1715494155930!5m2!1sen!2snp" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
     </div> 
 
     <!-- Footer -->

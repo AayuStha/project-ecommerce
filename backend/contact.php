@@ -72,7 +72,7 @@ if (!$connection) {
     .fa-caret-down {
         margin-left: 5px;
     }
-
+    
     </style>
 </head>
 <body>
@@ -80,7 +80,7 @@ if (!$connection) {
         <div class="navcont">
             <div class="navbar">
                 <div class="logo">
-                    <a href="../index.html">
+                    <a href="../index.php">
                         BagSalesNepal
                     </a>
                 </div>
@@ -90,7 +90,7 @@ if (!$connection) {
                         <li><a href="/project-ecommerce/products.php" >Products</a></li>
                         <li><a href="/project-ecommerce/about.php">About</a></li>
                         <li><a href="/project-ecommerce/contact.php" class="active">Contact</a></li>
-                        <li><a href="/project-ecommerce/offers.html">Offers</a></li>
+                        <li><a href="/project-ecommerce/offers.php">Offers</a></li>
                         <?php
                             if (isset($_SESSION['user_id']) && !empty($_SESSION['user_id'])) {
                                 $query = "SELECT firstname FROM users WHERE id = {$_SESSION['user_id']}";

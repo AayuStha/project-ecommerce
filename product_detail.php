@@ -210,8 +210,8 @@ cursor: pointer;
                                         echo "<a href='#' class='dropbtn'>$randomGreeting, $firstName <i class='fa fa-caret-down'></i></a>";
                                         echo "<div class='dropdown-content'>";
                                         echo "<a href='/project-ecommerce/user/view_orders.php'>View Orders</a>";
-                                        echo "<a href='/user/change_password.php'>Change Password</a>";
-                                        echo "<a href='/user/logout.php'>Logout</a>";
+                                        echo "<a href='/project-ecommerce/user/change_password.php'>Change Password</a>";
+                                        echo "<a href='/project-ecommerce/user/logout.php'>Logout</a>";
                                         echo "</div></li>";
                                     } else {
                                         echo '<li><a href="/project-ecommerce/login.php">Login</a></li>';
