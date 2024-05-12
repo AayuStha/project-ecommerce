@@ -12,8 +12,7 @@
         }
         th, td {
             border: 1px solid #ddd;
-            padding: 3px;
-            margin: 15px 0;
+            padding: 5px;
             text-align: center;
         }
         th {
