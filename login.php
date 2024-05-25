@@ -40,7 +40,7 @@
                 }
             } else {
                 // The email is invalid.
-                $error = 'Invalid email.';
+                $error = '<p style = "color: red;">Invalid email.</p>';
             }
             $stmt->close();
             $mysqli->close();

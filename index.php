@@ -276,6 +276,16 @@ if (!$connection) {
     </div>
 
     <script src="./js/button.js"></script>
+    <script>
+
+    var urlParams = new URLSearchParams(window.location.search);
+
+
+    if (urlParams.has('message')) {
+
+        alert(urlParams.get('message'));
+    }
+</script>
 
     
 </body>

@@ -104,7 +104,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['cart'] = array();
 
         // Redirect to the home page and show a message
-        header("Location: ../user/home.php?message=Order placed successfully");
+        header("Location: ../index.php?message=Order placed successfully");
     }
 }
 ?>

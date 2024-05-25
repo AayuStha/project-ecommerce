@@ -114,7 +114,7 @@ if (!$connection) {
                     <li><a href="/project-ecommerce/index.php">Home</a></li>
                     <li><a href="/project-ecommerce/products.php" >Products</a></li>
                     <li><a href="/project-ecommerce/about.php">About</a></li>
-                    <li><a href="/project-ecommerce/contact.html">Contact</a></li>
+                    <li><a href="/project-ecommerce/contact.php">Contact</a></li>
                     <li><a href="/project-ecommerce/offers.php" class="active">Offers</a></li>
                     <?php
                         if (isset($_SESSION['user_id']) && !empty($_SESSION['user_id'])) {
