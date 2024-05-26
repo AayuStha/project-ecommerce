@@ -16,6 +16,22 @@
     <link rel="icon" type="image/png" sizes="16x16" href="./favicon/favicon-16x16.png">
     <link rel="manifest" href="./favicon/site.webmanifest">
     <title>Sign Up - BagSalesNepal</title>
+    <style>
+        .btn{
+            background-color: #cd0709;
+            border: none;
+            color: #fff;
+            padding: 10px 30px;
+            width: 100px;
+            height: 30px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin-left: 900px;
+            cursor: pointer;
+        }
+    </style>
     
 </head>
 <body>
@@ -76,7 +92,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->bind_param("sssss", $firstname, $lastname, $email, $number, $hashed_password);
 
     if ($stmt->execute()) {
-        echo '<h1 style="text-align: center; margin: 15px auto">New record created successfully<h1>';
+        echo '<h1 style="text-align: center; margin: 15px auto">Account created successfully<h1>';
 
         // Create a new PHPMailer instance
         $mail = new PHPMailer;
@@ -122,7 +138,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (!$mail->send()) {
             echo 'Mailer Error: ' . $mail->ErrorInfo;
         } else {
-            echo '<h1 style="text-align: center; margin: 15px auto">Message sent!</h1>';
+            echo '<a class="btn" href="../index.php">Go to home</a>';
         }
     } else {
         echo "Error: " . $stmt->error;

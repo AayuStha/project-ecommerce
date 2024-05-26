@@ -34,10 +34,13 @@
     h1{
         font-size: 20px;
     }
+    .row-2{
+        margin-top: 25px;
+    }
     </style>
 </head>
 <body>
-    <div class="header">
+<div class="header">
         <div class="container">
             <div class="navbar">
                 <div class="logo">
@@ -48,21 +51,52 @@
                 <nav>
                     <ul id="items">
                         <li><a href="/project-ecommerce/index.php" class="active">Home</a></li>
-                        <li><a href="/project-ecommerce/products.php">Products</a></li>
+                        <li><a href="/project-ecommerce/products.php" >Products</a></li>
                         <li><a href="/project-ecommerce/about.php">About</a></li>
                         <li><a href="/project-ecommerce/contact.php">Contact</a></li>
                         <li><a href="/project-ecommerce/offers.php">Offers</a></li>
-                        <li><a href="/project-ecommerce/login.html">Login</a></li>
-                        <li><a href="/project-ecommerce/signup.html">Signup</a></li>
-                        <a href="cart.php"><i class="fa-solid fa-cart-shopping"></i></a>
+                        <?php
+                            if (isset($_SESSION['user_id']) && !empty($_SESSION['user_id'])) {
+                                $query = "SELECT firstname FROM users WHERE id = {$_SESSION['user_id']}";
+                                $result = mysqli_query($connection, $query);
+                                
+                                if ($result) {
+                                    $row = mysqli_fetch_assoc($result);
+                                    if ($row) {
+                                        $firstName = $row['firstname'];
+                                        echo "<li class='dropdown'>";
+                                        $greetings = array("Howdy", "Hello", "Hi", "Greetings", "Hey");
+                                        $randomGreeting = $greetings[array_rand($greetings)];
+                                        echo "<a href='#' class='dropbtn'>$randomGreeting, $firstName <i class='fa fa-caret-down'></i></a>";
+                                        echo "<div class='dropdown-content'>";
+                                        echo "<a href='/project-ecommerce/user/view_orders.php'>View Orders</a>";
+                                        echo "<a href='/project-ecommerce/user/change_password.php'>Change Password</a>";
+                                        echo "<a href='/project-ecommerce/user/logout.php'>Logout</a>";
+                                        echo "</div></li>";
+                                    } else {
+                                        echo '<li><a href="/project-ecommerce/login.php">Login</a></li>';
+                                        echo '<li><a href="/project-ecommerce/signup.html">Signup</a></li>';
+                                    }
+                                } else {
+                                    echo "ERROR: Could not execute $query. " . mysqli_error($connection);
+                                }
+                            } else {
+                                echo '<li><a href="/project-ecommerce/login.php">Login</a></li>';
+                                echo '<li><a href="/project-ecommerce/signup.html">Signup</a></li>';
+                            }
+                        ?>
+                        <a href="/project-ecommerce/cart/cart.php"><i class="fa-solid fa-cart-shopping"></i></a>
                     </ul>
                 </nav>
-                <!-- <img src="images/cart.png" width="30px" height="30px"alt="cart"> -->
+                <button id="hamburger-menu" class="hamburger-menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
             </div>
         </div>
-        <hr>
     </div>
-    <br>
     <div class="small-container">
         <div class="row row-2">
             <h2>Searched Items:</h2>

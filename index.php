@@ -138,12 +138,12 @@ if (!$connection) {
             <hr id="hr">
             <br>
             <div class="row">
-                <div class="col-2">
+                <div class="col-2" data-aos="fade-left">
                         <h1>Carry in Style: <br> Unleash Your Bag Obsession</h1>
                         <p>Step into the world of fashion-forward bags. Discover our curated collection and find the perfect accessory to elevate your style.</p>
                         <a href="products.php" class="btn">Explore Now &#8594;</a>
                 </div>
-                <div class="col-2">
+                <div class="col-2" data-aos="fade-right">
                         <a href="products/detail_three.html" ><img src="images/demo8.png" alt="bag"></a>
                 </div>
             </div>
@@ -215,7 +215,7 @@ if (!$connection) {
                     <img src="backend/uploads/demo.png" alt="hiii">
 
                 </div>
-                <div class="col-2">
+                <div class="col-2" data-aos="fade-left">
                     Exclusively available on BagSales Nepal
                     <h1>Laptop Bag</h1>
                     <small>Elevate your work style with our sleek and durable laptop bags, designed for both fashion and function. Stay organized and professional on the go.</small>
@@ -286,6 +286,7 @@ if (!$connection) {
         alert(urlParams.get('message'));
     }
 </script>
+
 
     
 </body>
