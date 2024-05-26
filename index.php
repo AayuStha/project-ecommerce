@@ -144,7 +144,7 @@ if (!$connection) {
                         <a href="products.php" class="btn">Explore Now &#8594;</a>
                 </div>
                 <div class="col-2">
-                        <a href="products/detail_three.html" ><img src="images/demo8.png" alt="bag"></a>
+                        <a href="products.php" ><img src="images/demo8.png" alt="bag"></a>
                 </div>
             </div>
         </div>
