@@ -143,8 +143,8 @@ if (!$connection) {
                         <p>Step into the world of fashion-forward bags. Discover our curated collection and find the perfect accessory to elevate your style.</p>
                         <a href="products.php" class="btn">Explore Now &#8594;</a>
                 </div>
-                <div class="col-2" data-aos="fade-right">
-                        <a href="products/detail_three.html" ><img src="images/demo8.png" alt="bag"></a>
+                <div class="col-2">
+                        <a href="products.php" ><img src="images/demo8.png" alt="bag"></a>
                 </div>
             </div>
         </div>

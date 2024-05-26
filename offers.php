@@ -172,8 +172,8 @@ if (!$connection) {
                 <div class="col-2">
                     <h1>Laptop Bag</h1>
                     <div class="price">
-                        <del><i> Rs 1999</i></del>
-                        <i> Rs 1499</i> 
+                        <del><i> Rs 649</i></del>
+                        <i> Rs 399</i> 
                     </div>
                         <br>
                     <small>Stylish and protective companions for your tech essentials. Carry your laptop with confidence and convenience while showcasing your personal style.</small>
@@ -187,7 +187,7 @@ if (!$connection) {
                 <div class="col-2">
                     <h1>Messenger Handbags</h1>
                     <div class="price">
-                        <del><i> Rs 2499</i></del>
+                        <del><i> Rs 1999</i></del>
                         <i> Rs 1799</i> 
                     </div>
                     <br>
@@ -209,8 +209,8 @@ if (!$connection) {
                 <div class="col-2">
                     <h1>Luggage & Handbag (Combo Offer!!!)</h1>
                     <div class="price">
-                        <del><i> Rs 2999</i></del>
-                        <i> Rs 2299</i> 
+                        <del><i> Rs 3499</i></del>
+                        <i> Rs 2699</i> 
                     </div>
                         <br>
                     <small>
