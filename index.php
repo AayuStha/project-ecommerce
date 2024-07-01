@@ -138,7 +138,7 @@ if (!$connection) {
             <hr id="hr">
             <br>
             <div class="row">
-                <div class="col-2" data-aos="fade-left">
+                <div class="col-2">
                         <h1>Carry in Style: <br> Unleash Your Bag Obsession</h1>
                         <p>Step into the world of fashion-forward bags. Discover our curated collection and find the perfect accessory to elevate your style.</p>
                         <a href="products.php" class="btn">Explore Now &#8594;</a>
